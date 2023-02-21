@@ -66,7 +66,7 @@ func pt*(self: BibleBook): string =
     of Matthew: "Mateus"
     of Mark: "Marcos"
     of Luke: "Lucas"
-    of Acts: "Atos"
+    of Acts: "Atos dos apóstolos"
     of James: "James"
     of Peter1: "1 Pedro"
     of Peter2: "2 Pedro"
@@ -93,13 +93,16 @@ func pt*(self: BibleBook): string =
     else: "Nome de livro desconhecido"
 
 
-func identifyBibleBookPt*(s: string): BibleBook =
+func identifyBibleBookPt*(bookName: string): BibleBook =
   ## Tries to identify a book name with given name or abbreviation\
   ## Based in https://www.bc.edu/content/dam/files/research_sites/cjl/pdf/Biblical%20Abbreviations_SBL%20Handbook.pdf
   func toText(self: BibleBook): string {.inline.} =
-    self.pt.normalize
+    self.pt.normalize.text
+
+  var s = bookName.normalize
+  result = Unknown
   result =
-    case s.normalize:
+    case s.text:
       of "gn", Genesis.toText: Genesis
       of "ex", Exodus.toText: Exodus
       of "lv", Leviticus.toText: Leviticus
@@ -108,78 +111,79 @@ func identifyBibleBookPt*(s: string): BibleBook =
       of "js", Joshua.toText: Joshua
       of "jz", Judges.toText: Judges
       of "rt", Ruth.toText: Ruth
-      of "1sm", "1sa", Samuel1.toText: Samuel1
-      of "2sm", "2sa", Samuel2.toText: Samuel2
-      of "1rs", Kings1.toText: Kings1
-      of "2rs", Kings2.toText: Kings2
-      of "1cr", Chronicles1.toText: Chronicles1
-      of "2cr", Chronicles2.toText: Chronicles2
-      of "ed", "esd", Ezra.toText: Ezra
+      of "sm", "sa", Samuel1.toText: s.getCorrectByNum(Samuel1, Samuel2)
+      of "rs", Kings1.toText: s.getCorrectByNum(Kings1, Kings2)
+      of "cr", Chronicles1.toText: s.getCorrectByNum(Chronicles1, Chronicles2)
+      of "ed", "esd", Ezra.toText:
+        if s.numbers == "": s.numbers = "1"
+        s.getCorrectByNum({Ezra: 1, Ezra3: 3, Ezra4: 4})
       of "ne", Nehemiah.toText: Nehemiah
-      of Ezra3.toText: Ezra3
-      of Tobit.toText: Tobit
-      of Judith.toText: Judith
-      of "et", Esther.toText: Esther
+      of "tb", Tobit.toText: Tobit
+      of "jud", Judith.toText: Judith
+      of "et", "est", Esther.toText: Esther
       of AdditionsToEsther.toText: AdditionsToEsther
       of "sl", Psalms.toText: Psalms
-      of "pv", Proverbs.toText: Proverbs
-      of Job.toText: Job
-      of "ecl", Ecclesiastes.toText: Ecclesiastes
+      of "pv", "pr", Proverbs.toText: Proverbs
+      of "ecl", "ec", Ecclesiastes.toText: Ecclesiastes
       of "sb", WisdomOfSolomon.toText: WisdomOfSolomon
       of "eclo", Sirach.toText: Sirach
       of "ct", SongOfSolomon.toText: SongOfSolomon
-      of #["is",]# Isaiah.toText: Isaiah
-      of Jeremiah.toText: Jeremiah
+      of "is", Isaiah.toText: Isaiah
+      of "jr", Jeremiah.toText: Jeremiah
       of "lm", Lamentations.toText: Lamentations
       of EpistleOfJeremiah.toText: EpistleOfJeremiah
-      of Baruk1.toText: Baruk1
-      of Baruk2.toText: Baruk2
+      of "br", Baruk1.toText:
+        if s.numbers == "": s.numbers = "1"
+        s.getCorrectByNum(Baruk1, Baruk2)
       of Susanna.toText: Susanna
-      of Ezekiel.toText: Ezekiel
-      of Daniel.toText: Daniel
+      of "ez", Ezekiel.toText: Ezekiel
+      of "dn", Daniel.toText: Daniel
       of BelAndTheDragon.toText: BelAndTheDragon
       of "os", Hosea.toText: Hosea
-      of Joel.toText: Joel
-      of Amos.toText: Amos
-      of "ab", Obadiah.toText: Obadiah
-      of Jonah.toText: Jonah
+      of "jl", Joel.toText: Joel
+      of "am", Amos.toText: Amos
+      of "ab", "ob", Obadiah.toText: Obadiah
+      of "jn", Jonah.toText: Jonah
       of "mq", Micah.toText: Micah
-      of Nahum.toText: Nahum
-      of "hc", Habakkuk.toText: Habakkuk
+      of "na", Nahum.toText: Nahum
+      of "hc", "hab", Habakkuk.toText: Habakkuk
       of "sf", Zephaniah.toText: Zephaniah
       of "ag", Haggai.toText: Haggai
-      of Zechariah.toText: Zechariah
-      of Malachi.toText: Malachi
-      of Matthew.toText: Matthew
+      of "zc", Zechariah.toText: Zechariah
+      of "ml", Malachi.toText: Malachi
+      of "mt", Matthew.toText: Matthew
       of Mark.toText: Mark
       of "lc", Luke.toText: Luke
-      of John.toText: John
-      of "at", Acts.toText: Acts
+      of "at", "atos", Acts.toText: Acts
       of "rm", Romans.toText: Romans
-      of "1co", Corinthians1.toText: Corinthians1
-      of "2co", Corinthians2.toText: Corinthians2
+      of "co", "cor", Corinthians1.toText: s.getCorrectByNum(Corinthians1, Corinthians2)
       of "gl", Galatians.toText: Galatians
       of "ef", Ephesians.toText: Ephesians
       of "fp", "fl", Philippians.toText: Philippians
       of "cl", Colossians.toText: Colossians
-      of "1ts", Thessalonians1.toText: Thessalonians1
-      of "2ts", Thessalonians2.toText: Thessalonians2
-      of "1tm", Timothy1.toText: Timothy1
-      of "2tm", Timothy2.toText: Timothy2
+      of "ts", Thessalonians1.toText: s.getCorrectByNum(Thessalonians1, Thessalonians2)
+      of "tm", Timothy1.toText: s.getCorrectByNum(Timothy1, Timothy2)
       of "tt", Titus.toText: Titus
       of "fm", Philemon.toText: Philemon
-      of "he", Hebrews.toText: Hebrews
+      of "he", "hb", Hebrews.toText: Hebrews
       of "tg", James.toText: James
-      of "1pe", "1pd", Peter1.toText: Peter1
-      of "2pe", "2pd", Peter2.toText: Peter2
-      of "1jo", John1.toText: John1
-      of "2jo", John2.toText: John2
-      of "3jo", John3.toText: John3
+      of "pe", "pd", Peter1.toText: s.getCorrectByNum(Peter1, Peter2)
+      of John.toText, Job.toText:
+        if "ó" in s.removed:
+          # Job
+          Job
+        else:
+          # Peter
+          if s.numbers.len == 0:
+            John
+          else:
+            s.getCorrectByNum(John1, John2, John3)
       of "jd", Jude.toText: Jude
       of "ap", Revelation.toText: Revelation
       of PrayerOfManasseh.toText: PrayerOfManasseh
-      of "1mc", "1mb", Maccabees1.toText: Maccabees1
-      of "2mc", "2mb", Maccabees2.toText: Maccabees2
-      of "3mc", "3mb", Maccabees3.toText: Maccabees3
-      of "4mc", "4mb", Maccabees4.toText: Maccabees4
+      of "mc", "mb", Maccabees1.toText:
+        if s.numbers.len == 0:
+          Mark
+        else:
+          s.getCorrectByNum(Maccabees1, Maccabees2, Maccabees3, Maccabees4)
       else: Unknown
