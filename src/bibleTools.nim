@@ -4,7 +4,7 @@ import bibleTools/[
   he, en, pt
 ]
 
-export he, en, pt
+export he, en, pt, BibleBook
 
 const canonBooks* = [Genesis, Exodus, Leviticus, Numbers, Deuteronomy, Joshua, Judges, Ruth, Samuel1, Samuel2, Kings1, Kings2, Chronicles1, Chronicles2, Ezra, Nehemiah, Esther, Job, Psalms, Proverbs, Ecclesiastes, SongOfSolomon, Isaiah, Jeremiah, Lamentations, Ezekiel, Daniel, Hosea, Joel, Amos, Obadiah, Jonah, Micah, Nahum, Habakkuk, Zephaniah, Haggai, Zechariah, Malachi, Matthew, Mark, Luke, John, Acts, Romans, Corinthians1, Corinthians2, Galatians, Ephesians, Philippians, Colossians, Thessalonians1, Thessalonians2, Timothy1, Timothy2, Titus, Philemon, Hebrews, James, Peter1, Peter2, John1, John2, John3, Jude, Revelation]
 const deuterocanonical* = [Tobit, Judith, Maccabees1, Maccabees2, WisdomOfSolomon, Sirach, Baruk1]
@@ -24,40 +24,3 @@ func identifyBibleBookAllLangs*(s: string): BibleBook =
   result = s.identifyBibleBookEn
   if result != Unknown: return
   result = s.identifyBibleBookPt
-
-
-when isMainModule:
-  proc concat[I1, I2: static[int]; T](a: array[I1, T], b: array[I2, T]): array[I1 + I2, T] =
-    result[0..a.high] = a
-    result[a.len..result.high] = b
-  const
-    ptAbbr = ["Gn","Êx","Lv","Nm","Dt","Js","Jz","Rt","1 Sm","2 Sm","1 Rs","2 Rs","1 Cr","2 Cr","Esd","Ne","Et","Sl","Pv","Ec","Ct","Is","Jr","Lm","Ez","Dn","Os","Jl","Am","Ob","Jn","Mq","Na","Hc","Sf","Ag","Zc","Ml","Mt","Mc","Lc","Jo","At","Rm","1 Co","2 Co","Gl","Ef","Fp","Cl","1 Ts","2 Ts","1 Tm","2 Tm","Tt","Fm","Hb","Tg","1 Pe","2 Pe","1 Jo","2 Jo","3 Jo","Jd","Ap","1Sm","2Sm","1Rs","2Rs","1Cr","2Cr","Ed","Jó","1Co","2Co","1Ts","2Ts","1Tm","2Tm","1Pe","2Pe","1Jo","2Jo","3Jo","Ex","Tb","Jud","Est","Pr","Ecl","Sb","Eclo","Br","Ab","Hab","1Mc","2Mc","1Cor","2Cor","Fl","1Pd","2Pd","Ap"]
-    enAbbr = ["Gn","Ex","Lv","Nm","Dt","Jos","Jdg","Ru","1Sm","2Sm","1Kg","2Kg","1Ch","2Ch","Ezr","Neh","Est","Jb","Ps","Pr","Ec","Sg","Is","Jr","Lm","Ezk","Dn","Hs","Jl","Am","Ob","Jnh","Mc","Nah","Hab","Zph","Hg","Zch","Mal","Mt","Mk","Lk","Jn","Ac","Rm","1Co","2Co","Gl","Eph","Php","Col","1Th","2Th","1Tm","2Tm","Ti","Phm","Heb","Jms","1Pt","2Pt","1Jn","2Jn","3Jn","Jd","Rv","Gen","Exo","Lev","Num","Deu","Josh","Judg","Ruth","1Sam","2Sam","1Kin","2Kin","1Chr","2Chr","1Esd","Tob","Judi","Esth","Job","Prov","Eccl","Song","Wis","Sir","Isa","Jer","Azar","Lam","Epi","Bar","Sus","Ezek","Dan","Bel","Hos","Joel","Oba","Jona","Mic","Zeph","Hag","Zech","1Ma","2Ma","Man","2Esd","Mat","Mar","Luk","John","Acts","Rom","1Cor","2Cor","Gal","Phil","1Ths","2Ths","1Tim","2Tim","Tit","Phlm","Jam","1Pet","2Pet","Jud","Rev","PrMan","Deut","1%E2%80%8ASam","2%E2%80%8ASam","1%E2%80%8AKin","2%E2%80%8AKin","1%E2%80%8AChr","2%E2%80%8AChr","Ezra","1%E2%80%8AEsd","Judith","Esth%E2%80%8AGr","Eccles","Ecclus","Lje","S3y","Amos","Obad","Jonah","1%E2%80%8AMac","2%E2%80%8AMac","2%E2%80%8AEsd","Mark","Luke","1%E2%80%8ACor","2%E2%80%8ACor","1%E2%80%8AThes","2%E2%80%8AThes","1%E2%80%8ATim","2%E2%80%8ATim","Philem","James","1%E2%80%8APet","2%E2%80%8APet","1%E2%80%8AJohn","2%E2%80%8AJohn","3%E2%80%8AJohn","Jude","Js","Jz","Rt","1Rs","2Rs","1Cr","2Cr","Esd","Ne","Tb","J%C3%B3","Sl","Ecl","Ct","Sb","Eclo","Br","Ez","Os","Ab","Mq","Na","Sf","Ag","Zc","Ml","1Mc","2Mc","Lc","Jo","At","Ef","Fl","Cl","1Ts","2Ts","Tt","Fm","Hb","Tg","1Pd","2Pd","1Jo","2Jo","3Jo","Ap","1Kgs","2Kgs","Jdt","GrEsth","EpJer","Sg3","Jon","1Mac","2Mac","Titus","Jas","GEN","EXO","LEV","NUM","DEU","JOS","JDG","RUT","1SA","2SA","1KI","2KI","1CH","2CH","EZR","NEH","3ES","TOB","JDT","EST","ESG","JOB","PSA","PRO","ECC","SNG","WIS","SIR","ISA","JER","LAM","LJE","BAR","S3Y","SUS","EZK","DAN","BEL","HOS","JOL","AMO","OBA","JON","MIC","NAM","HAB","ZEP","HAG","ZEC","MAL","1MA","2MA","MAT","MRK","LUK","JHN","ACT","ROM","1CO","2CO","GAL","EPH","PHP","COL","LAO","1TH","2TH","1TI","2TI","TIT","PHM","HEB","JAS","1PE","2PE","1JN","2JN","3JN","JUD","REV","MAN"]
-    abbreviations = ptAbbr.concat enAbbr
-    wrongAbbreviations = ["Atof", "reis", "kings", "king", "isis", "chronicle", "co"]
-  for abbr in ptAbbr:
-    let book = abbr.identifyBibleBookPt
-    echo book
-    if book == Unknown:
-      echo abbr.normalize, " - ", abbr
-      quit 1
-  # for abbr in enAbbr:
-  #   let book = abbr.identifyBibleBookEn
-  #   echo book
-  #   if book == Unknown:
-  #     echo abbr.normalize, " - ", abbr
-  #     quit 1
-  # for abbr in abbreviations:
-  #   let book = abbr.identifyBibleBookAllLangs
-  #   echo book
-  #   if book == Unknown:
-  #     echo abbr.normalize, " - ", abbr
-  #     quit 1
-  echo "wrong"
-  for abbr in wrongAbbreviations:
-    let book = abbr.identifyBibleBookAllLangs
-    if book != Unknown:
-      echo "wrong got"
-      echo book
-      echo abbr.normalize, " - ", abbr
-      quit 1

@@ -1,4 +1,5 @@
-from std/strutils import toLowerAscii, Letters, Digits, strip, parseInt, contains
+from std/strutils import toLowerAscii, Letters, Digits, strip, parseInt,
+                          contains, split
 from pkg/util/forStr import removeAccent
 
 export contains
@@ -18,7 +19,7 @@ type
         Mark, Luke, Acts, James, Peter1, Peter2, Jude, Timothy1, Titus,
         Thessalonians1, Thessalonians2, Romans, Galatians, Timothy2,
         Corinthians1, Corinthians2, Ephesians, Philippians, Colossians,
-        Philemon, Hebrews, John, John1, John2, John3, Revelation
+        Laodiceans, Philemon, Hebrews, John, John1, John2, John3, Revelation
 
 type NormalizedText* = tuple
   text: string
@@ -26,7 +27,6 @@ type NormalizedText* = tuple
   removed: seq[string]
 
 func normalize*(s: string): NormalizedText =
-  debugecho s
   for i, ch in s.removeAccent.toLowerAscii:
     if ch in Letters:
       result.text.add ch
@@ -38,9 +38,11 @@ func normalize*(s: string): NormalizedText =
 func getCorrectByNum*(s: NormalizedText; opts: varargs[
     BibleBook]): BibleBook {.inline.} =
   try: opts[s.numbers.parseInt - 1]
-  except ValueError: Unknown
-func getCorrectByNum*(s: NormalizedText; opts: openArray[(BibleBook,
-    int)]): BibleBook {.inline.} =
+  except ValueError, IndexDefect: Unknown
+func getCorrectByNum*(
+  s: NormalizedText;
+  opts: openArray[(BibleBook, int)]
+): BibleBook =
   result = Unknown
   try:
     for (book, num) in opts:
@@ -48,3 +50,13 @@ func getCorrectByNum*(s: NormalizedText; opts: openArray[(BibleBook,
         return book
   except ValueError:
     discard
+
+func isANumber*(s: var NormalizedText; text: string; num: int) =
+  ## Remove `text` of `s.text` and add `num` to `s.numbers`
+  let parts = s.text.split text
+  if parts.len > 1:
+    var newText = ""
+    s.numbers.add $num
+    for part in parts:
+      newText.add part
+    s.text = newText
