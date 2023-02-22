@@ -48,6 +48,7 @@ doAssert "Rev 14:12".parseBibleVerse.inOzzuuBible("en_wyc2014") ==
 - [ ] Add documentation
 - [ ] Add missing hebrew book names
 - [ ] Add hebrew transliteration book identification
+- [ ] Add a function to get the short version of a book
 
 ## License
 
