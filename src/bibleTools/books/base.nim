@@ -21,6 +21,8 @@ type
         Corinthians1, Corinthians2, Ephesians, Philippians, Colossians,
         Laodiceans, Philemon, Hebrews, John, John1, John2, John3, Revelation
 
+# Parsing tools
+
 type NormalizedText* = tuple
   text: string
   numbers: string

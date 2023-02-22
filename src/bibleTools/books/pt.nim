@@ -1,4 +1,4 @@
-import bibleTools/base
+import bibleTools/books/base
 
 func pt*(self: BibleBook): string =
   ## Get the portuguese name of given book
@@ -100,6 +100,8 @@ func identifyBibleBookPt*(bookName: string): BibleBook =
     self.pt.normalize.text
 
   var s = bookName.normalize
+  for (t, n) in [("primeiro", 1), ("segundo", 2), ("terceiro", 3), ("quarto", 4)]:
+    s.isANumber(t, n)
   result = Unknown
   result =
     case s.text:
