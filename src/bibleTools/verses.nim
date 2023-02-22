@@ -36,7 +36,7 @@ proc parseBibleVerse*(verse: string): BibleVerse =
     discard
 
 
-func `$`*(v: BibleVerse; hebrewTransliteration = false): string =
+func `$`*(v: BibleVerse; hebrewTransliteration = false; addTranslation = false): string =
   let verses = v.verses.join ","
   var bookName = v.book
   if hebrewTransliteration:
@@ -44,7 +44,7 @@ func `$`*(v: BibleVerse; hebrewTransliteration = false): string =
     if transliterated.len > 0:
       bookName = fmt"{transliterated} ({v.book})"
   result = fmt"{bookName} {v.chapter}:{verses}"
-  if v.translation.len > 0:
+  if addTranslation and v.translation.len > 0:
     result.add fmt" {v.translation}"
 
 func inOzzuuBible*(v: BibleVerse; defaultTranslation = "pt_yah"): string =
