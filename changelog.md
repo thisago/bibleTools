@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 0.5.0 (2023/02/23)
+
+- Fixed verse stringify function
+
+---
 ## Version 0.4.0 (2023/02/22)
 
 - Added an option in `BibleVerse` stringify function to show the verse translation (default is false)

@@ -15,6 +15,12 @@ suite "Verses":
       verses: @[12],
       translation: "pt_yah"
     )
+    check "Rm 8:2-4 pt_yah".parseBibleVerse == (
+      book: "Rm",
+      chapter: 8,
+      verses: @[2, 3, 4],
+      translation: "pt_yah"
+    )
   test "To Ozzuu Bible URL":
     check "Rev 14:12".parseBibleVerse.inOzzuuBible("en_wyc2014") ==
       "https://bible.ozzuu.com/en_wyc2014/Rev/14#12"
@@ -25,9 +31,9 @@ suite "Verses":
       verses: @[27],
       translation: ""
     ) == "Pv 29:27"
-    check $(
+    check `$`((
       book: "1Jo",
       chapter: 2,
       verses: @[6],
       translation: "pt_yah"
-    ) == "1Jo 2:6 pt_yah"
+    ), false, true) == "1Jo 2:6 pt_yah"

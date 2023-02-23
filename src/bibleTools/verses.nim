@@ -23,8 +23,8 @@ proc parseBibleVerse*(verse: string): BibleVerse =
   if "-" in parts[2]:
     let
       parts = parts[2].split "-"
-      start = parts[0].parseInt
-      to = parts[1].parseInt
+      start = parts[0].strip.parseInt
+      to = parts[1].strip.parseInt
     for i in start..to:
       result.verses.add i
   else:
