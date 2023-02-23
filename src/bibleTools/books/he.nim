@@ -1,4 +1,4 @@
-import bibleTools/books
+import bibleTools/books/base
 
 func he*(self: BibleBook): string =
   ## Get the hebrew name of given book
