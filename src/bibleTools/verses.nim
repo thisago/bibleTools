@@ -60,6 +60,5 @@ func inOzzuuBible*(v: BibleVerse; defaultTranslation = "pt_yah"): string =
   if v.translation.len > 0:
     translation = v.translation
   result = fmt"https://bible.ozzuu.com/{translation}/{v.book}/{v.chapter}"
-  var verse = 1
   if v.verses.len > 0:
-    result.add fmt"#{verse}"
+    result.add fmt"#{v.verses[0]}"

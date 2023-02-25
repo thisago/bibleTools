@@ -1,6 +1,5 @@
 import std/unittest
-# import bibleTools
-import bibleTools except `$`
+import bibleTools
 
 suite "Verses":
   test "Parse verse":
@@ -37,16 +36,16 @@ suite "Verses":
   test "To Ozzuu Bible URL":
     require "Rev 14:12".parseBibleVerse.inOzzuuBible("en_wyc2014") ==
       "https://bible.ozzuu.com/en_wyc2014/Rev/14#12"
-  # test "Stringify":
-  #   require $(
-  #     book: "Pv",
-  #     chapter: 29,
-  #     verses: @[27],
-  #     translation: ""
-  #   ) == "Pv 29:27"
-  #   require `$`((
-  #     book: "1Jo",
-  #     chapter: 2,
-  #     verses: @[6],
-  #     translation: "pt_yah"
-  #   ), false, true) == "1Jo 2:6 pt_yah"
+  test "Stringify":
+    require $(
+      book: "Pv",
+      chapter: 29,
+      verses: @[27],
+      translation: ""
+    ) == "Pv 29:27"
+    require `$`((
+      book: "1Jo",
+      chapter: 2,
+      verses: @[6],
+      translation: "pt_yah"
+    ), false, true) == "1Jo 2:6 pt_yah"
