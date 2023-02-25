@@ -4,7 +4,9 @@ from std/strutils import parseInt, split, replace, join, toUpperAscii,
                           toLowerAscii, contains, strip
 from std/strformat import fmt
 
-from bibleTools/books import identifyBibleBookAllLangs, hebrewTransliteration
+from bibleTools/books import identifyBibleBookAllLangs, hebrewTransliteration,
+                        identifyBibleBookEn, en, identifyBibleBookPt, pt
+import bibleTools/types
 
 type
   BibleVerse* = tuple
@@ -43,13 +45,22 @@ proc parseBibleVerse*(verse: string): BibleVerse =
   result.translation = parts[3].get.strip
 
 
-func `$`*(v: BibleVerse; hebrewTransliteration = false; addTranslation = false): string =
+func `$`*(
+  v: BibleVerse;
+  hebrewTransliteration = false;
+  addTranslation = false;
+  toLang: AvailableLanguages = ALDefault
+): string =
   let verses = v.verses.join ","
-  var bookName = v.book
+  var bookName = case toLang:
+                  of ALEnglish: v.book.identifyBibleBookEn.en
+                  of ALPortuguese: v.book.identifyBibleBookPt.pt
+                  else: v.book
+    
   if hebrewTransliteration:
     let transliterated = bookName.identifyBibleBookAllLangs.hebrewTransliteration
     if transliterated.len > 0:
-      bookName = fmt"{transliterated} ({v.book})"
+      bookName = fmt"{transliterated} ({bookName})"
   result = fmt"{bookName} {v.chapter}:{verses}"
   if addTranslation and v.translation.len > 0:
     result.add fmt" {v.translation}"

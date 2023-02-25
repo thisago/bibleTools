@@ -1,5 +1,14 @@
 # Changelog
 
+## Version 0.7.0 (2023/02/26)
+
+- Fixed portuguese stringify book names
+- Added more tests
+- Added option to enable book name translation in verse stringify function
+- Renamed books submodules
+
+---
+
 ## Version 0.6.1 (2023/02/25)
 
 - Fixed `verses.inOzzuuBible` verse adding

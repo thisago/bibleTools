@@ -2,9 +2,9 @@ from bibleTools/books/base import BibleBook
 export BibleBook
 
 import bibleTools/books/[
-  he, en, pt
+  hebrew, english, portuguese
 ]
-export he, en, pt
+export hebrew, english, portuguese
 
 const canonBooks* = [Genesis, Exodus, Leviticus, Numbers, Deuteronomy, Joshua,
     Judges, Ruth, Samuel1, Samuel2, Kings1, Kings2, Chronicles1, Chronicles2,

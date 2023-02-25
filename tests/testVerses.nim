@@ -48,4 +48,16 @@ suite "Verses":
       chapter: 2,
       verses: @[6],
       translation: "pt_yah"
-    ), false, true) == "1Jo 2:6 pt_yah"
+    ), hebrewTransliteration = false, addTranslation = true) == "1Jo 2:6 pt_yah"
+    require `$`((
+      book: "At",
+      chapter: 2,
+      verses: @[21],
+      translation: "pt_yah"
+    ), hebrewTransliteration = true) == "Ma'asiym (At) 2:21"
+    require `$`((
+      book: "Mt",
+      chapter: 6,
+      verses: @[5],
+      translation: ""
+    ), hebrewTransliteration = true, toLang = ALPortuguese) == "Mattithyahu (Mateus) 6:5"

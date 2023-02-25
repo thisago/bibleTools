@@ -12,28 +12,48 @@ const
     abbreviations = ptAbbr.concat enAbbr
     wrongAbbreviations = ["Atof", "reis", "kings", "third sam", "king", "isis", "chronicle"]
 
-suite "Books":
-  test "English identification":
+suite "Books identification":
+  test "English":
     for abbr in enAbbr:
       let book = abbr.identifyBibleBookEn
       if book == Unknown:
         echo abbr.normalize, " - ", abbr
       require book != Unknown
-  test "Portuguese identification":
+  test "Portuguese":
     for abbr in ptAbbr:
       let book = abbr.identifyBibleBookPt
       if book == Unknown:
         echo abbr.normalize, " - ", abbr
       require book != Unknown
-  test "All languages identification":
+  test "All languages":
     for abbr in abbreviations:
       let book = abbr.identifyBibleBookAllLangs
       if book == Unknown:
         echo abbr.normalize, " - ", abbr
       require book != Unknown
-  test "Wrong identification":
+  test "Wrong book names":
     for abbr in wrongAbbreviations:
       let book = abbr.identifyBibleBookAllLangs
       if book != Unknown:
         echo abbr.normalize, " - ", abbr
       require book == Unknown
+
+suite "Books stringify":
+  test "English":
+    require Deuteronomy.en == "Deuteronomy"
+    require Jasher.en == "Jasher"
+    require Samuel2.en == "2 Samuel"
+    require Kings1.en == "1 Kings"
+    require Psalms.en == "Psalms"
+    require Job.en == "Job"
+    require WisdomOfSolomon.en == "Wisdom Of Solomon"
+    require Sirach.en == "Sirach"
+  test "Portuguese":
+    require Deuteronomy.pt == "Deuteronômio"
+    require Jubilees.pt == "Jubileus"
+    require Joshua.pt == "Joshua"
+    require Nahum.pt == "Naum"
+    require Zephaniah.pt == "Sofonias"
+    require Haggai.pt == "Ageu"
+    require WisdomOfSolomon.pt == "Sabedoria de Salomão"
+    require Sirach.pt == "Eclesiástico"
