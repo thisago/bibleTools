@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.6.0 (2023/02/25)
+
+- Added support to reference without verse
+
+---
+
 ## Version 0.5.1 (2023/02/25)
 
 - Fixed verse parsing (allowed numbers in translation)
