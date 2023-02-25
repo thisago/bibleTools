@@ -21,6 +21,12 @@ suite "Verses":
       verses: @[2, 3, 4],
       translation: "pt_yah"
     )
+    check "Mt 6:5 pt_kja2001".parseBibleVerse == (
+      book: "Mt",
+      chapter: 6,
+      verses: @[5],
+      translation: "pt_kja2001"
+    )
   test "To Ozzuu Bible URL":
     check "Rev 14:12".parseBibleVerse.inOzzuuBible("en_wyc2014") ==
       "https://bible.ozzuu.com/en_wyc2014/Rev/14#12"

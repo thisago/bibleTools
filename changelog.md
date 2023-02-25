@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.5.1 (2023/02/25)
+
+- Fixed verse parsing (allowed numbers in translation)
+
+---
+
 ## Version 0.5.0 (2023/02/23)
 
 - Fixed verse stringify function

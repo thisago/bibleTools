@@ -12,7 +12,7 @@ type
     verses: seq[int]
     translation: string
 
-let verseRegex* = re"([^:]+) ([0-9]{1,3}):([0-9,\- ]+) ?([A-z]{2}_[A-z]+)?"
+let verseRegex* = re"([^:]+) ([0-9]{1,3}):([0-9,\- ]+) ?([A-z]{2}_[A-z0-9]+)?"
 
 proc parseBibleVerse*(verse: string): BibleVerse =
   ## Parses the verse reference to a `BibleVerse` tuple
