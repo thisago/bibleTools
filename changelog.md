@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.7.1 (2023/02/26)
+
+- Fixed verse stringify
+
+---
+
 ## Version 0.7.0 (2023/02/26)
 
 - Fixed portuguese stringify book names

@@ -61,7 +61,10 @@ func `$`*(
     let transliterated = bookName.identifyBibleBookAllLangs.hebrewTransliteration
     if transliterated.len > 0:
       bookName = fmt"{transliterated} ({bookName})"
-  result = fmt"{bookName} {v.chapter}:{verses}"
+  result = fmt"{bookName} {v.chapter}"
+  if verses.len > 0:
+    result.add fmt":{verses}"
+    
   if addTranslation and v.translation.len > 0:
     result.add fmt" {v.translation}"
 
