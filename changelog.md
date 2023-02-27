@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.7.2 (2023/02/27)
+
+- Fixed James book in portuguese
+
+---
+
 ## Version 0.7.1 (2023/02/26)
 
 - Fixed verse stringify

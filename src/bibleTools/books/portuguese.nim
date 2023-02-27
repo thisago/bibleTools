@@ -67,7 +67,7 @@ func pt*(self: BibleBook): string =
     of Mark: "Marcos"
     of Luke: "Lucas"
     of Acts: "Atos dos Apóstolos"
-    of James: "James"
+    of James: "Tiago"
     of Peter1: "1 Pedro"
     of Peter2: "2 Pedro"
     of Jude: "Judas"
