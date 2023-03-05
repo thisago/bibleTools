@@ -55,7 +55,6 @@ func `$`*(
   toLang: AvailableLanguages = ALDefault;
   maxVerses = 5
 ): string =
-  let verses = v.verses.join ","
   var bookName = case toLang:
                   of ALEnglish: v.book.identifyBibleBookEn.en
                   of ALPortuguese: v.book.identifyBibleBookPt.pt
@@ -66,11 +65,11 @@ func `$`*(
     if transliterated.len > 0:
       bookName = fmt"{transliterated} ({bookName})"
   result = fmt"{bookName} {v.chapter}"
-  if verses.len > 0:
-    if verses.len > maxVerses:
-      result.add fmt":{verses[0]}-{verses[^1]}"
+  if v.verses.len > 0:
+    if v.verses.len > maxVerses:
+      result.add fmt":{v.verses[0]}-{v.verses[^1]}"
     else:
-      result.add fmt":{verses}"
+      result.add ":" & v.verses.join ","
     
   if addTranslation and v.translation.len > 0:
     result.add fmt" {v.translation}"
@@ -83,6 +82,3 @@ func inOzzuuBible*(v: BibleVerse; defaultTranslation = "pt_yah"): string =
   result = fmt"https://bible.ozzuu.com/{translation}/{v.book}/{v.chapter}"
   if v.verses.len > 0:
     result.add fmt"#{v.verses[0]}"
-
-when isMainModule:
-  echo "2Tm 4:14".parseBibleVerse.book.repr

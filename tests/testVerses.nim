@@ -73,3 +73,8 @@ suite "Verses":
       verses: @[1,2,3,4,5,6,7,8,9],
       translation: ""
     ), hebrewTransliteration = true, toLang = ALPortuguese) == "Chizayon (Revelação) 1:1-9"
+    require `$`(
+      "Jr 31:31-34".parseBibleVerse,
+      hebrewTransliteration = true,
+      toLang = ALPortuguese
+    ) == "Yirmeyahu (Jeremias) 31:31,32,33,34"

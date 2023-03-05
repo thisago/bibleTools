@@ -1,11 +1,5 @@
 # Changelog
 
-## Version 0.8.0 (2023/03/05)
-
-- Done #4
-
----
-
 ## Version 0.7.3 (2023/03/05)
 
 - In verse parsing
