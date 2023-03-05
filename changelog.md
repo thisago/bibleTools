@@ -1,5 +1,13 @@
 # Changelog
 
+## Version 0.7.3 (2023/03/05)
+
+- In verse parsing
+  - Fixed book name title case
+  - Added strip in book name
+
+---
+
 ## Version 0.7.2 (2023/02/27)
 
 - Fixed James book in portuguese

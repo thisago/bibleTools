@@ -33,6 +33,12 @@ suite "Verses":
       verses: @[],
       translation: "pt_kja2001"
     )
+    require "2Tm 4:14".parseBibleVerse == (
+      book: "2Tm",
+      chapter: 4,
+      verses: @[14],
+      translation: ""
+    )
   test "To Ozzuu Bible URL":
     require "Rev 14:12".parseBibleVerse.inOzzuuBible("en_wyc2014") ==
       "https://bible.ozzuu.com/en_wyc2014/Rev/14#12"

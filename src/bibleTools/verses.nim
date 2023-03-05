@@ -1,7 +1,7 @@
 from std/nre import re, find, get, captures, `[]`, toSeq
 from std/options import Option, UnpackDefect
 from std/strutils import parseInt, split, replace, join, toUpperAscii,
-                          toLowerAscii, contains, strip
+                          toLowerAscii, contains, strip, Letters
 from std/strformat import fmt
 
 from bibleTools/books import identifyBibleBookAllLangs, hebrewTransliteration,
@@ -26,9 +26,12 @@ proc get[T](self: var Option[T]): T {.inline.} =
 proc parseBibleVerse*(verse: string): BibleVerse =
   ## Parses the verse reference to a `BibleVerse` tuple
   var parts = verse.find(verseRegex).get.captures.toSeq
-  result.book = parts[0].get.toLowerAscii
-  result.book[0] = result.book[0].toUpperAscii
-  result.chapter = parts[1].get.parseInt
+  result.book = parts[0].get.strip.toLowerAscii
+  for i, ch in result.book:
+    if ch in Letters:
+      result.book[i] = result.book[i].toUpperAscii
+      break
+  result.chapter = parts[1].get.strip.parseInt
   var verse = parts[2].get.strip
   if verse.len > 0:
     verse = verse[1..^1]
@@ -76,3 +79,6 @@ func inOzzuuBible*(v: BibleVerse; defaultTranslation = "pt_yah"): string =
   result = fmt"https://bible.ozzuu.com/{translation}/{v.book}/{v.chapter}"
   if v.verses.len > 0:
     result.add fmt"#{v.verses[0]}"
+
+when isMainModule:
+  echo "2Tm 4:14".parseBibleVerse.book.repr
