@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.8.0 (2023/03/05)
+
+- Done #4
+
+---
+
 ## Version 0.7.3 (2023/03/05)
 
 - In verse parsing
@@ -52,6 +58,7 @@
 - Fixed verse stringify function
 
 ---
+
 ## Version 0.4.0 (2023/02/22)
 
 - Added an option in `BibleVerse` stringify function to show the verse translation (default is false)

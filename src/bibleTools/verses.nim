@@ -52,7 +52,8 @@ func `$`*(
   v: BibleVerse;
   hebrewTransliteration = false;
   addTranslation = false;
-  toLang: AvailableLanguages = ALDefault
+  toLang: AvailableLanguages = ALDefault;
+  maxVerses = 5
 ): string =
   let verses = v.verses.join ","
   var bookName = case toLang:
@@ -66,7 +67,10 @@ func `$`*(
       bookName = fmt"{transliterated} ({bookName})"
   result = fmt"{bookName} {v.chapter}"
   if verses.len > 0:
-    result.add fmt":{verses}"
+    if verses.len > maxVerses:
+      result.add fmt":{verses[0]}-{verses[^1]}"
+    else:
+      result.add fmt":{verses}"
     
   if addTranslation and v.translation.len > 0:
     result.add fmt" {v.translation}"

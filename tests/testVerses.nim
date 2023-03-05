@@ -67,3 +67,9 @@ suite "Verses":
       verses: @[5],
       translation: ""
     ), hebrewTransliteration = true, toLang = ALPortuguese) == "Mattithyahu (Mateus) 6:5"
+    require `$`((
+      book: "Ap",
+      chapter: 1,
+      verses: @[1,2,3,4,5,6,7,8,9],
+      translation: ""
+    ), hebrewTransliteration = true, toLang = ALPortuguese) == "Chizayon (Revelação) 1:1-9"
