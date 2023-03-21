@@ -103,7 +103,3 @@ func inOzzuuBible*(v: BibleVerse; defaultTranslation = "pt_yah"): string =
   result = fmt"https://bible.ozzuu.com/{translation}/{v.book}/{v.chapter}"
   if v.verses.len > 0:
     result.add fmt"#{v.verses[0]}"
-
-echo "gn 1:1".parseBibleVerse
-echo "gn".parseBibleVerse
-echo "".parseBibleVerse
