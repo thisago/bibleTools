@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.10.0 (21/03/2023)
+
+- Added hebrew names of canon books
+
+---
+
 ## Version 0.9.0 (21/03/2023)
 
 - Added `mns` to `BibleBook.PrayerOfManasseh` english identification
