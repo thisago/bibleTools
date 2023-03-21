@@ -19,7 +19,7 @@ type
     verses: seq[int]
     translation: string
 
-func initBibleVerse: BibleVerse =
+func initBibleVerse*: BibleVerse =
   discard
 
 when defined js:
