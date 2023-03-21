@@ -156,19 +156,14 @@ func identifyBibleBookEn*(bookName: string): BibleBook =
         s.getCorrectByNum(Baruk1, Baruk2)
       of "sus", Susanna.toText: Susanna
       of "bel", BelAndTheDragon.toText: BelAndTheDragon
-      # of "ima", "imac", "imacc", "imaccabees": Maccabees1
-      # of "iima", "iimac", "iimacc", "iimaccabees": Maccabees2
-      # of "iiima", "iiimac", "iiimacc", "iiimaccabees": Maccabees3
-      # of "ivma", "ivmac", "ivmacc", "ivmaccabees": Maccabees4
       of "mac", "m", "ma", "macc", "stmaccabees", Maccabees1.toText: s.getCorrectByNum(Maccabees1, Maccabees2, Maccabees3, Maccabees4)
-      # of "ies", "iesd", "iesdr", "iesdras": Ezra # correct? not `Esdras`?
       of "ezr", "ez", "esdr", "esd", "es", "stesdras", Ezra.toText:
         if s.text == "es" and s.numbers == "":
           Esther
         else:
           if s.numbers == "": s.numbers = "1"
           s.getCorrectByNum({Ezra: 1, Ezra3: 3, Ezra4: 4})
-      of "profman", "prman", "pma", "prayerofmanasses", "man", PrayerOfManasseh.toText: PrayerOfManasseh
+      of "profman", "prman", "pma", "prayerofmanasses", "man", "mns", PrayerOfManasseh.toText: PrayerOfManasseh
       of "matt", "mt", "mat", Matthew.toText: Matthew
       of "mrk", "mar", "mk", "mr", Mark.toText: Mark
       of "luk", "lk", Luke.toText: Luke
@@ -205,8 +200,11 @@ func identifyBibleBookEn*(bookName: string): BibleBook =
       of "jn", "jo", "joh", "jhn", "j", "stjohn", John.toText:
         if s.numbers == "": John
         else: s.getCorrectByNum(John1, John2, John3)
-      of "jud", "jd", "judi", Jude.toText: Jude
+      of "jud", "jd", "judi", "jde", Jude.toText: Jude
       of "rev", "re", "therevelation", "rv", Revelation.toText: Revelation
+      of "jub", Jubilees.toText: Jubilees
+      of "eno", Enoch.toText: Enoch
+      of "jash", "jsr", Jasher.toText: Jasher
       else: Unknown
 
       # Add later:
@@ -217,3 +215,97 @@ func identifyBibleBookEn*(bookName: string): BibleBook =
       # of "ode", Ode.toText: Ode
       # of "pssolomon", "pssol", "psalmssolomon", "pssol", PsalmsOfSolomon.toText: PsalmsOfSolomon
       # of "laodiceans", "laod", "eplaod", "epistlaodiceans", "epistlelaodiceans", "epistletolaodiceans", EpistleToTheLaodiceans.toText: EpistleToTheLaodiceans
+
+func enAbbr*(self: BibleBook): string =
+  ## Returns a short version of book
+  # Based in http://bmfg.org/bmfg-about/bible-books-common-abbreviations/ and https://www.biblestudytools.com/resources/abbreviation-guide.html
+  case self:
+    of Genesis: "Gen"
+    of Exodus: "Exo"
+    of Leviticus: "Lev"
+    of Numbers: "Num"
+    of Deuteronomy: "Deu"
+    of Joshua: "Jos"
+    of Judges: "Jdg"
+    of Ruth: "Rut"
+    of Samuel1: "1Sm"
+    of Samuel2: "2Sm"
+    of Kings1: "1Ki"
+    of Kings2: "2Ki"
+    of Chronicles1: "1Ch"
+    of Chronicles2: "2Ch"
+    of Nehemiah: "Neh"
+    of Esther: "Est"
+    of Job: "Job"
+    of Psalms: "Psa"
+    of Proverbs: "Pro"
+    of Ecclesiastes: "Ecc"
+    of SongOfSolomon: "Sos"
+    of Isaiah: "Isa"
+    of Jeremiah: "Jer"
+    of EpistleOfJeremiah: "Epi"
+    of Lamentations: "Lam"
+    of Ezekiel: "Eze"
+    of Daniel: "Dan"
+    of Hosea: "Hos"
+    of Joel: "Joe"
+    of Amos: "Amo"
+    of Obadiah: "Oba"
+    of Jonah: "Jon"
+    of Micah: "Mic"
+    of Nahum: "Nah"
+    of Habakkuk: "Hab"
+    of Zephaniah: "Zep"
+    of Haggai: "Hag"
+    of Zechariah: "Zec"
+    of Malachi: "Mal"
+    of Tobit: "Tob"
+    of Judith: "Jdt"
+    of AdditionsToEsther: "Aes"
+    of WisdomOfSolomon: "Wis"
+    of Sirach: "Sir"
+    of Baruk1: "Bar"
+    of Baruk2: "2Bar"
+    of Susanna: "Sus"
+    of BelAndTheDragon: "Bel"
+    of Maccabees1: "1ma"
+    of Maccabees2: "2ma"
+    of Ezra: "1Ez"
+    of Ezra3: "3Ez"
+    of Ezra4: "4Ez"
+    of PrayerOfManasseh: "Mns"
+    of Maccabees3: "3ma"
+    of Maccabees4: "4ma"
+    of Matthew: "Mat"
+    of Mark: "Mar"
+    of Luke: "Luk"
+    of John: "Joh"
+    of Acts: "Act"
+    of Romans: "Rom"
+    of Corinthians1: "1Co"
+    of Corinthians2: "2Co"
+    of Galatians: "Gal"
+    of Ephesians: "Eph"
+    of Philippians: "Php"
+    of Colossians: "Col"
+    of Thessalonians1: "1Th"
+    of Thessalonians2: "2Th"
+    of Timothy1: "1Ti"
+    of Timothy2: "2Ti"
+    of Titus: "Tit"
+    of Philemon: "Phm"
+    of Hebrews: "Heb"
+    of James: "Jam"
+    of Peter1: "1Pe"
+    of Peter2: "2Pe"
+    of John1: "1Jo"
+    of John2: "2Jo"
+    of John3: "3Jo"
+    of Jude: "Jde"
+    of Revelation: "Rev"
+    of Jubilees: "Jub"
+    of Enoch: "Eno"
+    of Jasher: "Jsr"
+    of PrayerOfAzariah: "Aza"
+    of Laodiceans: "Lao"
+    of Unknown: "???"

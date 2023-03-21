@@ -1,5 +1,14 @@
 # Changelog
 
+## Version 0.9.0 (21/03/2023)
+
+- Added `mns` to `BibleBook.PrayerOfManasseh` english identification
+- Added `jde` to `BibleBook.Jude` english identification
+- Added `bel` to `BibleBook.BelAndTheDragon` portuguese identification
+- Added `enAbbr` and `ptAbbr` to get the book abbreviation
+
+---
+
 ## Version 0.8.1 (2023/03/21)
 
 - Fixed syntax error in english book submodule
