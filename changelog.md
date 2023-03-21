@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.8.0 (2023/03/21)
+
+- Added support to Javascript backend (closes #7)
+
+---
+
 ## Version 0.7.3 (2023/03/05)
 
 - In verse parsing
