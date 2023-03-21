@@ -90,7 +90,8 @@ func pt*(self: BibleBook): string =
     of John2: "2 João"
     of John3: "3 João"
     of Revelation: "Revelação"
-    else: "Nome de livro desconhecido"
+    of Laodiceans: "Laodicenses"
+    of UnknownBook: "Nome de livro desconhecido"
 
 
 func identifyBibleBookPt*(bookName: string): BibleBook =
@@ -102,7 +103,7 @@ func identifyBibleBookPt*(bookName: string): BibleBook =
   var s = bookName.normalize
   for (t, n) in [("primeiro", 1), ("segundo", 2), ("terceiro", 3), ("quarto", 4)]:
     s.isANumber(t, n)
-  result = Unknown
+  result = UnknownBook
   result =
     case s.text:
       of "gn", Genesis.toText: Genesis
@@ -188,7 +189,7 @@ func identifyBibleBookPt*(bookName: string): BibleBook =
           Mark
         else:
           s.getCorrectByNum(Maccabees1, Maccabees2, Maccabees3, Maccabees4)
-      else: Unknown
+      else: UnknownBook
 
 func ptAbbr*(self: BibleBook): string =
   ## Returns a short version of book
@@ -282,4 +283,4 @@ func ptAbbr*(self: BibleBook): string =
     of Jasher: "Jsr"
     of PrayerOfAzariah: "Az"
     of Laodiceans: "La"
-    of Unknown: "??"
+    of UnknownBook: "??"

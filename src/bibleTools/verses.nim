@@ -8,16 +8,16 @@ from std/strutils import parseInt, split, replace, join, toUpperAscii,
                           toLowerAscii, contains, strip, Letters
 from std/strformat import fmt
 
-from bibleTools/books import identifyBibleBookAllLangs, hebrewTransliteration,
-                        identifyBibleBookEn, en, identifyBibleBookPt, pt
-import bibleTools/types
+from bibleTools/books import identifyBibleBook, hebrewTransliteration, en, pt,
+                              enAbbr, ptAbbr, AvailableLanguages, abbr, name,
+                              AnyLangBook
 
 type
-  BibleVerse* = tuple
-    book: string
-    chapter: int
-    verses: seq[int]
-    translation: string
+  BibleVerse* = object
+    book*: AnyLangBook
+    chapter*: int
+    verses*: seq[int]
+    translation*: string
 
 func initBibleVerse*: BibleVerse =
   discard
@@ -45,11 +45,7 @@ proc parseBibleVerse*(verse: string): BibleVerse =
     parts.delete 0
   else:
     var parts = verse.find(verseRegex).get.captures.toSeq
-  result.book = parts[0].get.strip.toLowerAscii
-  for i, ch in result.book:
-    if ch in Letters:
-      result.book[i] = result.book[i].toUpperAscii
-      break
+  result.book = parts[0].get.strip.identifyBibleBook
   result.chapter = parts[1].get.strip.parseInt
   var verse = parts[2].get.strip
   if verse.len > 0:
@@ -68,21 +64,24 @@ proc parseBibleVerse*(verse: string): BibleVerse =
 
 
 func `$`*(
-  v: BibleVerse;
+  self: BibleVerse;
   hebrewTransliteration = false;
   addTranslation = false;
-  toLang: AvailableLanguages = ALDefault;
-  maxVerses = 5
+  maxVerses = 5;
+  shortBook = true;
+  forceLang = ALUnknown
 ): string =
-  if v == initBibleVerse():
+  ## Stringify a `BibleVerse` with a lot of options
+  if self == initBibleVerse():
     return
-  var bookName = case toLang:
-                  of ALEnglish: v.book.identifyBibleBookEn.en
-                  of ALPortuguese: v.book.identifyBibleBookPt.pt
-                  else: v.book
+  var v = self
+  if forceLang != ALUnknown:
+    v.book.lang = forceLang
+    
+  var bookName = if shortBook: v.book.abbr else: v.book.name
 
   if hebrewTransliteration:
-    let transliterated = bookName.identifyBibleBookAllLangs.hebrewTransliteration
+    let transliterated = v.book.book.hebrewTransliteration
     if transliterated.len > 0:
       bookName = fmt"{transliterated} ({bookName})"
   result = fmt"{bookName} {v.chapter}"
@@ -100,6 +99,6 @@ func inOzzuuBible*(v: BibleVerse; defaultTranslation = "pt_yah"): string =
   var translation = defaultTranslation
   if v.translation.len > 0:
     translation = v.translation
-  result = fmt"https://bible.ozzuu.com/{translation}/{v.book}/{v.chapter}"
+  result = fmt"https://bible.ozzuu.com/{translation}/{v.book.abbr}/{v.chapter}"
   if v.verses.len > 0:
     result.add fmt"#{v.verses[0]}"

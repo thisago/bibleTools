@@ -16,27 +16,27 @@ suite "Books identification":
   test "English":
     for abbr in enAbbr:
       let book = abbr.identifyBibleBookEn
-      if book == Unknown:
+      if book == UnknownBook:
         echo abbr.normalize, " - ", abbr
-      require book != Unknown
+      require book != UnknownBook
   test "Portuguese":
     for abbr in ptAbbr:
       let book = abbr.identifyBibleBookPt
-      if book == Unknown:
+      if book == UnknownBook:
         echo abbr.normalize, " - ", abbr
-      require book != Unknown
+      require book != UnknownBook
   test "All languages":
     for abbr in abbreviations:
-      let book = abbr.identifyBibleBookAllLangs
-      if book == Unknown:
+      let book = abbr.identifyBibleBook.book
+      if book == UnknownBook:
         echo abbr.normalize, " - ", abbr
-      require book != Unknown
+      require book != UnknownBook
   test "Wrong book names":
     for abbr in wrongAbbreviations:
-      let book = abbr.identifyBibleBookAllLangs
-      if book != Unknown:
+      let book = abbr.identifyBibleBook.book
+      if book != UnknownBook:
         echo abbr.normalize, " - ", abbr
-      require book == Unknown
+      require book == UnknownBook
 
 suite "Books stringify":
   test "English":
@@ -64,7 +64,7 @@ suite "Books abbreviation":
     for book in BibleBook:
       let abbr = book.enAbbr
       require abbr notin used
-      if book == Unknown:
+      if book == UnknownBook:
         require abbr == "???"
       else:
         require abbr != "???"
@@ -75,7 +75,7 @@ suite "Books abbreviation":
       let abbr = book.ptAbbr
       require abbr notin used
       used.add abbr
-      if book == Unknown:
+      if book == UnknownBook:
         require abbr == "??"
       else:
         require abbr != "??"

@@ -1,5 +1,5 @@
-from bibleTools/books/base import BibleBook
-export BibleBook
+from bibleTools/books/base import BibleBook, AvailableLanguages
+export BibleBook, AvailableLanguages
 
 import bibleTools/books/[
   hebrew, english, portuguese
@@ -24,8 +24,33 @@ func isCanon*(self: BibleBook; catholic = false): bool =
   if not result and catholic:
     result = self in deuterocanonical
 
-func identifyBibleBookAllLangs*(s: string): BibleBook =
-  ## Try to indentify the book name in all supported languages
-  result = s.identifyBibleBookEn
-  if result != Unknown: return
-  result = s.identifyBibleBookPt
+type AnyLangBook* = tuple
+  book: BibleBook
+  lang: AvailableLanguages
+
+func identifyBibleBook*(s: string; lang = ALUnknown): AnyLangBook =
+  ## Try to identify the book name in all supported languages
+  const parsers = {
+    ALEnglish: identifyBibleBookEn,
+    ALPortuguese: identifyBibleBookPt
+  }
+  result = (UnknownBook, ALUnknown)
+  for (parserLanguage, parse) in parsers:
+    if lang != ALUnknown and lang != parserLanguage: continue
+    result.book = parse s
+    result.lang = parserLanguage
+    if result.book != UnknownBook: return
+
+func name*(self: AnyLangBook): string =
+  ## Get the full name of book based on it's language
+  case self.lang:
+  of ALEnglish: self.book.en
+  of ALPortuguese: self.book.pt
+  of ALUnknown: "Unknown book language"
+
+func abbr*(self: AnyLangBook): string =
+  ## Get the abbreviation of book based on it's language
+  case self.lang:
+  of ALEnglish: self.book.enAbbr
+  of ALPortuguese: self.book.ptAbbr
+  of ALUnknown: "?"

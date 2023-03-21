@@ -1,5 +1,18 @@
 # Changelog
 
+## Version 1.0.0 (21/03/2023)
+
+**BREAKING CHANGE**
+
+- Added mandatory book identification in verse parsing
+- Added short or extended book name in verse stringify
+- Restructured the code
+- Added `AnyLangBook`, a tuple returned by `identifyBibleBook` that saves the
+  language and book enum
+- Added `attr` and `name` to get from a `AnyLangBook`
+
+---
+
 ## Version 0.10.0 (21/03/2023)
 
 - Added hebrew names of canon books

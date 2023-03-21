@@ -90,7 +90,8 @@ func en*(self: BibleBook): string =
     of John2: "2 John"
     of John3: "3 John"
     of Revelation: "Revelation"
-    else: "Unknown book name"
+    of Laodiceans: "Laodiceans"
+    of UnknownBook: "Unknown book name"
 
 func identifyBibleBookEn*(bookName: string): BibleBook =
   ## Tries to identify a book name with given name or abbreviation\
@@ -132,7 +133,7 @@ func identifyBibleBookEn*(bookName: string): BibleBook =
       of "ezek", "eze", "ezk", Ezekiel.toText: Ezekiel
       of "dan", "da", "dn", Daniel.toText: Daniel
       of "azar", "sy", PrayerOfAzariah.toText:
-        if s.text == "sy" and s.numbers.len == 0: Unknown
+        if s.text == "sy" and s.numbers.len == 0: UnknownBook
         else: PrayerOfAzariah
       of "hos", "ho", "hs", Hosea.toText: Hosea
       of "joe", "jl", "jol", Joel.toText: Joel
@@ -205,7 +206,7 @@ func identifyBibleBookEn*(bookName: string): BibleBook =
       of "jub", Jubilees.toText: Jubilees
       of "eno", Enoch.toText: Enoch
       of "jash", "jsr", Jasher.toText: Jasher
-      else: Unknown
+      else: UnknownBook
 
       # Add later:
       # of "letjer", "ltrjer", "lje", LetterOfJeremiah.toText: LetterOfJeremiah
@@ -308,4 +309,4 @@ func enAbbr*(self: BibleBook): string =
     of Jasher: "Jsr"
     of PrayerOfAzariah: "Aza"
     of Laodiceans: "Lao"
-    of Unknown: "???"
+    of UnknownBook: "???"

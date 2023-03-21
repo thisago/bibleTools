@@ -14,11 +14,19 @@ doAssert "ex".identifyBibleBookEn == Exodus
 doAssert "Jo".identifyBibleBookPt == John
 ```
 
+### Smart book identification
+
+```nim
+doAssert "second bar".identifyBibleBook == (Baruk2, ALEnglish)
+doAssert "tg".identifyBibleBook == (James, ALPortuguese)
+doAssert "1ts".identifyBibleBook == (book: Thessalonians1, lang: ALPortuguese)
+```
+
 ### Parse verse
 
 ```nim
-doAssert "Mt 5:17-20".parseBibleVerse == (
-  book: "Mt",
+doAssert "Mat 5:17-20".parseBibleVerse == BibleVerse(
+  book: (Matthew, ALEnglish),
   chapter: 5,
   verses: @[17, 18, 19, 20],
   translation: ""
@@ -28,8 +36,8 @@ doAssert "Mt 5:17-20".parseBibleVerse == (
 ### Stringify verse
 
 ```nim
-doAssert $(
-  book: "Pv",
+doAssert $BibleVerse(
+  book: (Proverbs, ALPortuguese),
   chapter: 29,
   verses: @[27],
   translation: ""
@@ -39,14 +47,21 @@ doAssert $(
 ### To Ozzuu Bible URL
 
 ```nim
-doAssert "Rev 14:12".parseBibleVerse.inOzzuuBible("en_wyc2014") ==
+doAssert "Revelation 14:12".parseBibleVerse.inOzzuuBible("en_wyc2014") ==
   "https://bible.ozzuu.com/en_wyc2014/Rev/14#12"
 ```
+
+### More examples!
+
+Please see the tests files to see more examples!
+
+- [books test](tests/testBooks.nim)
+- [verses test](tests/testVerses.nim)
 
 ## TODO
 
 - [ ] Add documentation
-- [ ] Add missing hebrew book names
+- [-] Add missing hebrew book names
 - [ ] Add hebrew transliteration book identification
 - [x] Add a function to get the short version of a book
 

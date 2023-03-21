@@ -1,2 +1,2 @@
-import bibleTools/[types, books, verses]
-export types, books, verses
+import bibleTools/[books, verses]
+export books, verses

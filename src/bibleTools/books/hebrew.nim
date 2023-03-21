@@ -91,6 +91,7 @@ func he*(self: BibleBook): string =
     of John3: "יהוחנן ג"
     of Revelation: "רז גלה"
     # else: "שם הספר לא ידוע"
+    of UnknownBook: "Unknown book"
     else: "Not added yet!"
 
 func hebrewTransliteration*(self: BibleBook): string =
@@ -183,4 +184,5 @@ func hebrewTransliteration*(self: BibleBook): string =
     of John2: "Yochanon Sheniy"
     of John3: "Yochanon Sheliyshiy"
     of Revelation: "Chizayon"
-    else: "Unknown book name"
+    of Laodiceans: "Unknown hebrew transliteration"
+    of UnknownBook: "Unknown book name"

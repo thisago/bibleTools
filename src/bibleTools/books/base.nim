@@ -7,7 +7,7 @@ export contains
 type
   BibleBook* = enum
     ## List of bible books in Cepher
-    Unknown, Genesis, Exodus, Leviticus, Numbers, Deuteronomy, Jubilees, Enoch,
+    UnknownBook, Genesis, Exodus, Leviticus, Numbers, Deuteronomy, Jubilees, Enoch,
         Jasher, Joshua, Judges, Samuel1, Samuel2, Kings1, Kings2, Isaiah,
         Jeremiah, EpistleOfJeremiah, Ezekiel, Tobit, Baruk1, Baruk2, Hosea,
         Joel, Amos, Obadiah, Jonah, Micah, Nahum, Habakkuk, Zephaniah, Haggai,
@@ -20,6 +20,11 @@ type
         Thessalonians1, Thessalonians2, Romans, Galatians, Timothy2,
         Corinthians1, Corinthians2, Ephesians, Philippians, Colossians,
         Laodiceans, Philemon, Hebrews, John, John1, John2, John3, Revelation
+
+type
+  AvailableLanguages* = enum
+    ## Available languages for book identifying
+    ALUnknown, ALEnglish, ALPortuguese
 
 # Parsing tools
 
@@ -40,12 +45,13 @@ func normalize*(s: string): NormalizedText =
 func getCorrectByNum*(s: NormalizedText; opts: varargs[
     BibleBook]): BibleBook {.inline.} =
   try: opts[s.numbers.parseInt - 1]
-  except ValueError, IndexDefect: Unknown
+  except ValueError, IndexDefect: UnknownBook
+
 func getCorrectByNum*(
   s: NormalizedText;
   opts: openArray[(BibleBook, int)]
 ): BibleBook =
-  result = Unknown
+  result = UnknownBook
   try:
     for (book, num) in opts:
       if s.numbers.parseInt == num:
