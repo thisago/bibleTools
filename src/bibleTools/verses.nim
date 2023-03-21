@@ -19,6 +19,9 @@ type
     verses: seq[int]
     translation: string
 
+func initBibleVerse: BibleVerse =
+  discard
+
 when defined js:
   template re(s: string): RegExp =
     newRegExp s
@@ -38,6 +41,7 @@ proc parseBibleVerse*(verse: string): BibleVerse =
   ## Parses the verse reference to a `BibleVerse` tuple
   when defined js:
     var parts = verseRegex.exec(verse)
+    if parts.len < 3: return
     parts.delete 0
   else:
     var parts = verse.find(verseRegex).get.captures.toSeq
@@ -70,6 +74,8 @@ func `$`*(
   toLang: AvailableLanguages = ALDefault;
   maxVerses = 5
 ): string =
+  if v == initBibleVerse():
+    return
   var bookName = case toLang:
                   of ALEnglish: v.book.identifyBibleBookEn.en
                   of ALPortuguese: v.book.identifyBibleBookPt.pt
@@ -97,3 +103,7 @@ func inOzzuuBible*(v: BibleVerse; defaultTranslation = "pt_yah"): string =
   result = fmt"https://bible.ozzuu.com/{translation}/{v.book}/{v.chapter}"
   if v.verses.len > 0:
     result.add fmt"#{v.verses[0]}"
+
+echo "gn 1:1".parseBibleVerse
+echo "gn".parseBibleVerse
+echo "".parseBibleVerse

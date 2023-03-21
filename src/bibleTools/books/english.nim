@@ -116,7 +116,7 @@ func identifyBibleBookEn*(bookName: string): BibleBook =
       of "iikgs", "iiki": Kings2
       of "kg", "kgs", "ki", "k", "kin", "stkgs", "stkings", Kings1.toText: s.getCorrectByNum(Kings1, Kings2)
       of "ich", "ichr", "ichron": Chronicles1
-      of "iich", "iichr", "iichron",: Chronicles2
+      of "iich", "iichr", "iichron": Chronicles2
       of "chron", "ch", "chr", "stchron", "stchroniclesfirstchron", Chronicles1.toText: s.getCorrectByNum(Chronicles1, Chronicles2)
       of "neh", "ne", Nehemiah.toText: Nehemiah
       of "esth", "est", Esther.toText: Esther

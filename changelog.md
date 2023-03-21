@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 0.8.1 (2023/03/21)
+
+- Fixed syntax error in english book submodule
+- Fixed JS crash when regex not matches
+
+---
+
 ## Version 0.8.0 (2023/03/21)
 
 - Added support to Javascript backend (closes #7)
