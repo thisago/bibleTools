@@ -1,6 +1,6 @@
 # Package
 
-version       = "1.0.0"
+version       = "1.0.1"
 author        = "Thiago Navarro"
 description   = "Bible tools to manipulate bible references!"
 license       = "MIT"
@@ -9,7 +9,7 @@ srcDir        = "src"
 
 # Dependencies
 
-requires "nim >= 1.9.1"
+requires "nim >= 1.6.4"
 requires "util"
 
 task testAll, "Test in C and JS backend":

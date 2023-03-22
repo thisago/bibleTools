@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 1.0.1 (22/03/2023)
+
+- Reduced min Nim version from devel to stable
+
+---
+
 ## Version 1.0.0 (21/03/2023)
 
 **BREAKING CHANGE**
