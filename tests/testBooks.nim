@@ -37,6 +37,9 @@ suite "Books identification":
       if book != UnknownBook:
         echo abbr.normalize, " - ", abbr
       require book == UnknownBook
+  test "Mismatches":
+    require "Mc".identifyBibleBook.book == Mark
+    require "Mq".identifyBibleBook.book == Micah
 
 suite "Books stringify":
   test "English":

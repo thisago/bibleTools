@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 1.0.2 (26/03/2023)
+
+- Inverted the language order of `identifyBibleBook`
+
+---
+
 ## Version 1.0.1 (22/03/2023)
 
 - Reduced min Nim version from devel to stable

@@ -31,8 +31,8 @@ type AnyLangBook* = tuple
 func identifyBibleBook*(s: string; lang = ALUnknown): AnyLangBook =
   ## Try to identify the book name in all supported languages
   const parsers = {
+    ALPortuguese: identifyBibleBookPt,
     ALEnglish: identifyBibleBookEn,
-    ALPortuguese: identifyBibleBookPt
   }
   result = (UnknownBook, ALUnknown)
   for (parserLanguage, parse) in parsers:

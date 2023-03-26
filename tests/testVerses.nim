@@ -4,37 +4,37 @@ import bibleTools
 suite "Verses":
   test "Parse verse":
     require "Mt 5:17-20".parseBibleVerse == BibleVerse(
-      book: AnyLangBook (Matthew, ALEnglish),
+      book: AnyLangBook (Matthew, ALPortuguese),
       chapter: 5,
       verses: @[17, 18, 19, 20],
       translation: ""
     )
     require "Rm 2:12 pt_yah".parseBibleVerse == BibleVerse(
-      book: AnyLangBook (Romans, ALEnglish),
+      book: AnyLangBook (Romans, ALPortuguese),
       chapter: 2,
       verses: @[12],
       translation: "pt_yah"
     )
     require "Rm 8:2-4 pt_yah".parseBibleVerse == BibleVerse(
-      book: AnyLangBook (Romans, ALEnglish),
+      book: AnyLangBook (Romans, ALPortuguese),
       chapter: 8,
       verses: @[2, 3, 4],
       translation: "pt_yah"
     )
     require "Mt 6:5 pt_kja2001".parseBibleVerse == BibleVerse(
-      book: AnyLangBook (Matthew, ALEnglish),
+      book: AnyLangBook (Matthew, ALPortuguese),
       chapter: 6,
       verses: @[5],
       translation: "pt_kja2001"
     )
     require "Is 4 pt_kja2001".parseBibleVerse == BibleVerse(
-      book: AnyLangBook (Isaiah, ALEnglish),
+      book: AnyLangBook (Isaiah, ALPortuguese),
       chapter: 4,
       verses: @[],
       translation: "pt_kja2001"
     )
     require "2Tm 4:14".parseBibleVerse == BibleVerse(
-      book: AnyLangBook (Timothy2, ALEnglish),
+      book: AnyLangBook (Timothy2, ALPortuguese),
       chapter: 4,
       verses: @[14],
       translation: ""
