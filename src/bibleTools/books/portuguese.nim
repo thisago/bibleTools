@@ -172,11 +172,12 @@ func identifyBibleBookPt*(bookName: string): BibleBook =
       of "tg", James.toText: James
       of "pe", "pd", Peter1.toText: s.getCorrectByNum(Peter1, Peter2)
       of John.toText, Job.toText:
+        debugEcho s.removed
         if "ó" in s.removed:
           # Job
           Job
         else:
-          # Peter
+          # John
           if s.numbers.len == 0:
             John
           else:

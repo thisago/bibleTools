@@ -38,6 +38,8 @@ suite "Books identification":
         echo abbr.normalize, " - ", abbr
       require book == UnknownBook
   test "Mismatches":
+    require "jó".identifyBibleBook.book == Job
+    require "jo".identifyBibleBook.book == John
     require "Mc".identifyBibleBook.book == Mark
     require "Mq".identifyBibleBook.book == Micah
 

@@ -1,8 +1,9 @@
 from std/strutils import toLowerAscii, Letters, Digits, strip, parseInt,
                           contains, split
-from pkg/util/forStr import removeAccent
-
+from std/unicode import toRunes, `$`
 export contains
+
+from pkg/util/forStr import removeAccent
 
 type
   BibleBook* = enum
@@ -31,16 +32,22 @@ type
 type NormalizedText* = tuple
   text: string
   numbers: string
-  removed: seq[string]
+  removed: string
 
 func normalize*(s: string): NormalizedText =
-  for i, ch in s.removeAccent.toLowerAscii:
-    if ch in Letters:
-      result.text.add ch
-    elif ch in Digits:
-      result.numbers.add ch
+  for rune in s.toLowerAscii.toRunes:
+    let letter = $rune
+    if letter.len == 1:
+      let ch = letter[0]
+      if ch in Letters:
+        result.text.add ch
+      elif ch in Digits:
+        result.numbers.add ch
     else:
-      result.removed.add $s[i]
+      result.removed.add letter.strip
+      for ch in letter.removeAccent:
+        if ch in Letters:
+          result.text.add ch.toLowerAscii
 
 func getCorrectByNum*(s: NormalizedText; opts: varargs[
     BibleBook]): BibleBook {.inline.} =

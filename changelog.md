@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 1.0.3 (26/03/2023)
+
+- Fixed `jó` (Job) and `jo` (John) abbreviation identification
+
+---
+
 ## Version 1.0.2 (26/03/2023)
 
 - Inverted the language order of `identifyBibleBook`
