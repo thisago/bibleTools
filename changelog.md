@@ -1,5 +1,13 @@
 # Changelog
 
+## Version 1.0.4 (26/03/2023)
+
+- Fixed Mark portuguese identification (closes #12)
+- Disable number ignoring for books that doesn't have it: like `1Gn`
+- Removed `j` from John identification (closes #14)
+
+---
+
 ## Version 1.0.3 (26/03/2023)
 
 - Fixed `jó` (Job) and `jo` (John) abbreviation identification

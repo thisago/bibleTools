@@ -104,118 +104,124 @@ func identifyBibleBookEn*(bookName: string): BibleBook =
     s.isANumber(t, n)
   result =
     case s.text:
-      of "gen", "ge", "gn", Genesis.toText: Genesis
-      of "exod", "exo", "ex", Exodus.toText: Exodus
-      of "lev", "le", "lv", Leviticus.toText: Leviticus
-      of "num", "nu", "nm", "nb", Numbers.toText: Numbers
-      of "deut", "de", "dt", "deu", Deuteronomy.toText: Deuteronomy
-      of "josh", "jos", "jsh", Joshua.toText: Joshua
-      of "judg", "jdg", "jg", "jdgs", Judges.toText: Judges
-      of "rth", "ru", "rut", Ruth.toText: Ruth
-      of "s", "sa", "sm", "sam", "stsam", "stsamuel", Samuel1.toText: s.getCorrectByNum(Samuel1, Samuel2)
+      of "gen", "ge", "gn", Genesis.toText: s.noNum Genesis
+      of "exod", "exo", "ex", Exodus.toText: s.noNum Exodus
+      of "lev", "le", "lv", Leviticus.toText: s.noNum Leviticus
+      of "num", "nu", "nm", "nb", Numbers.toText: s.noNum Numbers
+      of "deut", "de", "dt", "deu", Deuteronomy.toText: s.noNum Deuteronomy
+      of "josh", "jos", "jsh", Joshua.toText: s.noNum Joshua
+      of "judg", "jdg", "jg", "jdgs", Judges.toText: s.noNum Judges
+      of "rth", "ru", "rut", Ruth.toText: s.noNum Ruth
+      of "s", "sa", "sm", "sam", "stsam", "stsamuel", Samuel1.toText:
+        s.getCorrectByNum(Samuel1, Samuel2)
       of "ikgs", "iki": Kings1
       of "iikgs", "iiki": Kings2
-      of "kg", "kgs", "ki", "k", "kin", "stkgs", "stkings", Kings1.toText: s.getCorrectByNum(Kings1, Kings2)
+      of "kg", "kgs", "ki", "k", "kin", "stkgs", "stkings", Kings1.toText:
+        s.getCorrectByNum(Kings1, Kings2)
       of "ich", "ichr", "ichron": Chronicles1
       of "iich", "iichr", "iichron": Chronicles2
-      of "chron", "ch", "chr", "stchron", "stchroniclesfirstchron", Chronicles1.toText: s.getCorrectByNum(Chronicles1, Chronicles2)
-      of "neh", "ne", Nehemiah.toText: Nehemiah
-      of "esth", "est", Esther.toText: Esther
-      of "jb", Job.toText: Job
-      of "psalm", "pslm", "ps", "psa", "psm", "pss", Psalms.toText: Psalms
-      of "prov", "pro", "pr", "prv", Proverbs.toText: Proverbs
-      of "eccles", "eccle", "ecc", "ec", "qoh", Ecclesiastes.toText: Ecclesiastes
-      of "songofsongs", "song", "so", "sos", "canticleofcanticles", "canticles", "cant", "sg", "sng", SongOfSolomon.toText: SongOfSolomon
-      of "is", "isa", Isaiah.toText: Isaiah
-      of "jer", "je", "jr", Jeremiah.toText: Jeremiah
-      of "epjer", "epi", "lje", EpistleOfJeremiah.totext: EpistleOfJeremiah
-      of "lam", "la", "lm", Lamentations.toText: Lamentations
-      of "ezek", "eze", "ezk", Ezekiel.toText: Ezekiel
-      of "dan", "da", "dn", Daniel.toText: Daniel
+      of "chron", "ch", "chr", "stchron", "stchroniclesfirstchron", Chronicles1.toText:
+        s.getCorrectByNum(Chronicles1, Chronicles2)
+      of "neh", "ne", Nehemiah.toText: s.noNum Nehemiah
+      of "esth", "est", Esther.toText: s.noNum Esther
+      of "jb", Job.toText: s.noNum Job
+      of "psalm", "pslm", "ps", "psa", "psm", "pss", Psalms.toText: s.noNum Psalms
+      of "prov", "pro", "pr", "prv", Proverbs.toText: s.noNum Proverbs
+      of "eccles", "eccle", "ecc", "ec", "qoh", Ecclesiastes.toText: s.noNum Ecclesiastes
+      of "songofsongs", "song", "so", "sos", "canticleofcanticles", "canticles", "cant", "sg", "sng", SongOfSolomon.toText: s.noNum SongOfSolomon
+      of "is", "isa", Isaiah.toText: s.noNum Isaiah
+      of "jer", "je", "jr", Jeremiah.toText: s.noNum Jeremiah
+      of "epjer", "epi", "lje", EpistleOfJeremiah.totext: s.noNum EpistleOfJeremiah
+      of "lam", "la", "lm", Lamentations.toText: s.noNum Lamentations
+      of "ezek", "eze", "ezk", Ezekiel.toText: s.noNum Ezekiel
+      of "dan", "da", "dn", Daniel.toText: s.noNum Daniel
       of "azar", "sy", PrayerOfAzariah.toText:
         if s.text == "sy" and s.numbers.len == 0: UnknownBook
         else: PrayerOfAzariah
-      of "hos", "ho", "hs", Hosea.toText: Hosea
-      of "joe", "jl", "jol", Joel.toText: Joel
-      of "am", "amo", Amos.toText: Amos
-      of "obad", "ob", "oba", Obadiah.toText: Obadiah
-      of "jnh", "jon", "jona", Jonah.toText: Jonah
-      of "mic", "mc", Micah.toText: Micah
-      of "nah", "na", "nam", Nahum.toText: Nahum
-      of "hab", "hb", Habakkuk.toText: Habakkuk
-      of "zeph", "zep", "zp", "zph", Zephaniah.toText: Zephaniah
-      of "hag", "hg", Haggai.toText: Haggai
-      of "zech", "zec", "zc", "zch", Zechariah.toText: Zechariah
-      of "mal", "ml", Malachi.toText: Malachi
-      of "tob", "tb", Tobit.toText: Tobit
-      of "jdth", "jdt", "jth", Judith.toText: Judith
-      of "addesth", "addes", "restofesther", "therestofesther", "aes", "esthgr", "gresth", "esg", AdditionsToEsther.toText: AdditionsToEsther
-      of "wisdofsol", "wis", "ws", "wisdom", WisdomOfSolomon.toText: WisdomOfSolomon
-      of "sir", "ecclesiasticus", "ecclus", "eccl", Sirach.toText: Sirach
+      of "hos", "ho", "hs", Hosea.toText: s.noNum Hosea
+      of "joe", "jl", "jol", Joel.toText: s.noNum Joel
+      of "am", "amo", Amos.toText: s.noNum Amos
+      of "obad", "ob", "oba", Obadiah.toText: s.noNum Obadiah
+      of "jnh", "jon", "jona", Jonah.toText: s.noNum Jonah
+      of "mic", "mc", Micah.toText: s.noNum Micah
+      of "nah", "na", "nam", Nahum.toText: s.noNum Nahum
+      of "hab", "hb", Habakkuk.toText: s.noNum Habakkuk
+      of "zeph", "zep", "zp", "zph", Zephaniah.toText: s.noNum Zephaniah
+      of "hag", "hg", Haggai.toText: s.noNum Haggai
+      of "zech", "zec", "zc", "zch", Zechariah.toText: s.noNum Zechariah
+      of "mal", "ml", Malachi.toText: s.noNum Malachi
+      of "tob", "tb", Tobit.toText: s.noNum Tobit
+      of "jdth", "jdt", "jth", Judith.toText: s.noNum Judith
+      of "addesth", "addes", "restofesther", "therestofesther", "aes", "esthgr", "gresth", "esg", AdditionsToEsther.toText: s.noNum AdditionsToEsther
+      of "wisdofsol", "wis", "ws", "wisdom", WisdomOfSolomon.toText: s.noNum WisdomOfSolomon
+      of "sir", "ecclesiasticus", "ecclus", "eccl", Sirach.toText: s.noNum Sirach
       of "baruch", "bar", Baruk1.toText:
         if s.numbers == "": s.numbers = "1"
         s.getCorrectByNum(Baruk1, Baruk2)
-      of "sus", Susanna.toText: Susanna
-      of "bel", BelAndTheDragon.toText: BelAndTheDragon
-      of "mac", "m", "ma", "macc", "stmaccabees", Maccabees1.toText: s.getCorrectByNum(Maccabees1, Maccabees2, Maccabees3, Maccabees4)
+      of "sus", Susanna.toText: s.noNum Susanna
+      of "bel", BelAndTheDragon.toText: s.noNum BelAndTheDragon
+      of "mac", "m", "ma", "macc", "stmaccabees", Maccabees1.toText:
+        s.getCorrectByNum(Maccabees1, Maccabees2, Maccabees3, Maccabees4)
       of "ezr", "ez", "esdr", "esd", "es", "stesdras", Ezra.toText:
-        if s.text == "es" and s.numbers == "":
-          Esther
+        if s.text == "es":
+          s.noNum Esther
         else:
           if s.numbers == "": s.numbers = "1"
           s.getCorrectByNum({Ezra: 1, Ezra3: 3, Ezra4: 4})
-      of "profman", "prman", "pma", "prayerofmanasses", "man", "mns", PrayerOfManasseh.toText: PrayerOfManasseh
-      of "matt", "mt", "mat", Matthew.toText: Matthew
-      of "mrk", "mar", "mk", "mr", Mark.toText: Mark
-      of "luk", "lk", Luke.toText: Luke
-      of "act", "ac", Acts.toText: Acts
-      of "rom", "ro", "rm", Romans.toText: Romans
+      of "profman", "prman", "pma", "prayerofmanasses", "man", "mns", PrayerOfManasseh.toText: s.noNum PrayerOfManasseh
+      of "matt", "mt", "mat", Matthew.toText: s.noNum Matthew
+      of "mrk", "mar", "mk", "mr", Mark.toText: s.noNum Mark
+      of "luk", "lk", Luke.toText: s.noNum Luke
+      of "act", "ac", Acts.toText: s.noNum Acts
+      of "rom", "ro", "rm", Romans.toText: s.noNum Romans
       # of "ico", "icor", "icorinthians": Corinthians1
       # of "iico", "iicor", "iicorinthians": Corinthians2
       of "cor", "co", "ndcorinthians", Corinthians1.toText:
         if s.text == "co" and s.numbers == "": Colossians
         else: s.getCorrectByNum(Corinthians1, Corinthians2)
-      of "gal", "ga", "gl", Galatians.toText: Galatians
-      of "ephes", "eph", Ephesians.toText: Ephesians
-      of "phil", "php", "pp", Philippians.toText: Philippians
-      of "col", Colossians.toText: Colossians
+      of "gal", "ga", "gl", Galatians.toText: s.noNum Galatians
+      of "ephes", "eph", Ephesians.toText: s.noNum Ephesians
+      of "phil", "php", "pp", Philippians.toText: s.noNum Philippians
+      of "col", Colossians.toText: s.noNum Colossians
       # of "ith", "ithes", "ithess", "ithessalonians": Thessalonians1
       # of "iith", "iithes", "iithess", "iithessalonians": Thessalonians2
-      of "ths", "thess", "th", "thes", "stthess", "stthessalonians", Thessalonians1.toText: s.getCorrectByNum(Thessalonians1, Thessalonians2)
+      of "ths", "thess", "th", "thes", "stthess", "stthessalonians", Thessalonians1.toText:
+        s.getCorrectByNum(Thessalonians1, Thessalonians2)
       of "iti", "itim", "itimothy": Timothy1
       of "iiti", "iitim", "iitimothy": Timothy2
       of "tim", "ti", "sttim", "sttimothy", "tm", Timothy1.toText:
         if s.text == "ti" and s.numbers == "": Titus
         else: s.getCorrectByNum(Timothy1, Timothy2)
-      of "tit", Titus.toText: Titus
-      of "lao", Laodiceans.toText: Laodiceans
-      of "philem", "phm", "pm", "phlm", Philemon.toText: Philemon
-      of "heb", Hebrews.toText: Hebrews
-      of "jas", "jm", "jms", "jam", James.toText: James
+      of "tit", Titus.toText: s.noNum Titus
+      of "lao", Laodiceans.toText: s.noNum Laodiceans
+      of "philem", "phm", "pm", "phlm", Philemon.toText: s.noNum Philemon
+      of "heb", Hebrews.toText: s.noNum Hebrews
+      of "jas", "jm", "jms", "jam", James.toText: s.noNum James
       # of "ipe", "ipet", "ipt", "ipeter": Peter1
       # of "iipe", "iipet", "iipt", "iipeter": Peter2
-      of "pet", "pe", "pt", "p", "stpeter", Peter1.toText: s.getCorrectByNum(Peter1, Peter2)
+      of "pet", "pe", "pt", "p", "stpeter", Peter1.toText:
+        s.getCorrectByNum(Peter1, Peter2)
       # of "ijn", "ijo", "ijoh", "ijhn", "ijohn": John1
       # of "iijn", "iijo", "iijoh", "iijhn", "iijohn": John2
       # of "iiijn", "iiijo", "iiijoh", "iiijhn", "iiijohn": John3
-      of "jn", "jo", "joh", "jhn", "j", "stjohn", John.toText:
+      of "jn", "jo", "joh", "jhn", "stjohn", John.toText:
         if s.numbers == "": John
         else: s.getCorrectByNum(John1, John2, John3)
-      of "jud", "jd", "judi", "jde", Jude.toText: Jude
-      of "rev", "re", "therevelation", "rv", Revelation.toText: Revelation
-      of "jub", Jubilees.toText: Jubilees
-      of "eno", Enoch.toText: Enoch
-      of "jash", "jsr", Jasher.toText: Jasher
+      of "jud", "jd", "judi", "jde", Jude.toText: s.noNum Jude
+      of "rev", "re", "therevelation", "rv", Revelation.toText: s.noNum Revelation
+      of "jub", Jubilees.toText: s.noNum Jubilees
+      of "eno", Enoch.toText: s.noNum Enoch
+      of "jash", "jsr", Jasher.toText: s.noNum Jasher
       else: UnknownBook
 
       # Add later:
-      # of "letjer", "ltrjer", "lje", LetterOfJeremiah.toText: LetterOfJeremiah
-      # of "addpsalm", "addps", AdditionalPsalm.toText: AdditionalPsalm
-      # of "2esdr", "2esd", "iies", "2es", "iiesd", "2esd", "iiesdr", "2esdr", "iiesdras", "2esdras", "2ndesdras", "secondesdras", Esdras2.toText: Esdras2
-      # of "songofthree", "songthr", "thesongofthreeyouths", "praz", "prayerofazariah", "azariah", "thesongofthethreeholychildren", "thesongofthreejews", "songofthethreeholychildren", "songofthr", "songofthreechildren", "songofthreejews", SongOfThreeYouths.toText: SongOfThreeYouths
-      # of "ode", Ode.toText: Ode
-      # of "pssolomon", "pssol", "psalmssolomon", "pssol", PsalmsOfSolomon.toText: PsalmsOfSolomon
-      # of "laodiceans", "laod", "eplaod", "epistlaodiceans", "epistlelaodiceans", "epistletolaodiceans", EpistleToTheLaodiceans.toText: EpistleToTheLaodiceans
+      # of "letjer", "ltrjer", "lje", LetterOfJeremiah.toText: s.noNum LetterOfJeremiah
+      # of "addpsalm", "addps", AdditionalPsalm.toText: s.noNum AdditionalPsalm
+      # of "2esdr", "2esd", "iies", "2es", "iiesd", "2esd", "iiesdr", "2esdr", "iiesdras", "2esdras", "2ndesdras", "secondesdras", Esdras2.toText: s.noNum Esdras2
+      # of "songofthree", "songthr", "thesongofthreeyouths", "praz", "prayerofazariah", "azariah", "thesongofthethreeholychildren", "thesongofthreejews", "songofthethreeholychildren", "songofthr", "songofthreechildren", "songofthreejews", SongOfThreeYouths.toText: s.noNum SongOfThreeYouths
+      # of "ode", Ode.toText: s.noNum Ode
+      # of "pssolomon", "pssol", "psalmssolomon", "pssol", PsalmsOfSolomon.toText: s.noNum PsalmsOfSolomon
+      # of "laodiceans", "laod", "eplaod", "epistlaodiceans", "epistlelaodiceans", "epistletolaodiceans", EpistleToTheLaodiceans.toText: s.noNum EpistleToTheLaodiceans
 
 func enAbbr*(self: BibleBook): string =
   ## Returns a short version of book
