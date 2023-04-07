@@ -52,6 +52,7 @@ suite "Verses":
     require $found[1].parsed == "Exo 2:2"
     require found[1].raw == "exod 2:2"
     require $found[3].parsed == "Êx 3:6"
+    require $"os 1; 1Co 2".parseBibleVerses[0].parsed == "Os 1"
   test "In Ozzuu Bible URL":
     require "Exo 8:5".parseBibleVerse.inOzzuuBible[24..^1] == "en_KJV1769D/Exo/8#5"
     require "Ex 9:7".parseBibleVerse.inOzzuuBible[24..^1] == "pt_yah/Êx/9#7"

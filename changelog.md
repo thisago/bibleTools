@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.2.4 (2023/04/07)
+
+- Fixed verses Regex
+
 ## Version 1.2.3 (2023/04/07)
 
 - Fixed bulk verse parsing raw strip

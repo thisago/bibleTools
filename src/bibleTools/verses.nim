@@ -39,7 +39,7 @@ else:
 
 
 let
-  verseRe* = r"([^:]+) ([0-9]{1,3})(:[0-9,\- ]+)? ?([A-z]{2}_[A-z0-9]+)?"
+  verseRe* = r"([^:,;-]+) ([0-9]{1,3})(:[0-9,\- ]+)? ?([A-z]{2}_[A-z0-9]+)?"
   verseRegex* = re verseRe
   justVerseRegex* = re fmt"^{verseRe}$"
 
