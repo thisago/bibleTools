@@ -45,9 +45,15 @@ suite "Verses":
       translation: "",
       error: false
     )
-  test "To Ozzuu Bible URL":
-    require "Rev 14:12".parseBibleVerse.inOzzuuBible("en_wyc2014") ==
-      "https://bible.ozzuu.com/en_wyc2014/Rev/14#12"
+  test "Parse verses":
+    let parsed = "Gen 1:1; Exod 2:2; Lv 3:3".parseBibleVerses
+    require parsed[2].book.lang == ALPortuguese
+    require parsed[0].book.lang == ALEnglish
+    require $parsed[1] == "Exo 2:2"
+  test "In Ozzuu Bible URL":
+    require "Exo 8:5".parseBibleVerse.inOzzuuBible[24..^1] == "en_KJV1769D/Exo/8#5"
+    require "Ex 9:7".parseBibleVerse.inOzzuuBible[24..^1] == "pt_yah/Êx/9#7"
+    require "Rev 14:12".parseBibleVerse.inOzzuuBible("en_wyc2014")[24..^1] == "en_wyc2014/Rev/14#12"
   test "Stringify":
     require $BibleVerse(
       book:  (Proverbs, ALPortuguese),
@@ -110,3 +116,4 @@ suite "Verses":
     require $"Zph 2:3".parseBibleVerse == "Zep 2:3" 
     require $"Zch 3:4".parseBibleVerse == "Zec 3:4" 
     require $"Esdr 4:5".parseBibleVerse == "1Ez 4:5" 
+    require $"Ap. 4:5".parseBibleVerse == "Ap 4:5" 

@@ -1,5 +1,6 @@
-from bibleTools/books/base import BibleBook, AvailableLanguages
-export BibleBook, AvailableLanguages
+from bibleTools/books/base import BibleBook, AvailableLanguages,
+                                    defaultTranslationFor
+export BibleBook, AvailableLanguages, defaultTranslationFor
 
 import bibleTools/books/[
   hebrew, english, portuguese

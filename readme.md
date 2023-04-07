@@ -25,22 +25,34 @@ doAssert "1ts".identifyBibleBook == (book: Thessalonians1, lang: ALPortuguese)
 ### Parse verse
 
 ```nim
-doAssert "Mat 5:17-20".parseBibleVerse == BibleVerse(
-  book: (Matthew, ALEnglish),
+doAssert "Mt 5:17-20".parseBibleVerse == BibleVerse(
+  book: AnyLangBook (Matthew, ALPortuguese),
   chapter: 5,
   verses: @[17, 18, 19, 20],
-  translation: ""
+  translation: "",
+  error: false
 )
+```
+
+### Parse multiple verses
+
+```nim
+from pkg/bibleTools import ALPortuguese, ALEnglish
+let parsed = "Gen 1:1; Exod 2:2; Lv 3:3".parseBibleVerses
+doAssert parsed[2].book.lang == ALPortuguese
+doAssert parsed[0].book.lang == ALEnglish
+doAssert $parsed[1] == "Exo 2:2"
 ```
 
 ### Stringify verse
 
 ```nim
 doAssert $BibleVerse(
-  book: (Proverbs, ALPortuguese),
+  book:  (Proverbs, ALPortuguese),
   chapter: 29,
   verses: @[27],
-  translation: ""
+  translation: "",
+  error: false
 ) == "Pv 29:27"
 ```
 

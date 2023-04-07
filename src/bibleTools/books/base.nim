@@ -26,6 +26,12 @@ type
     ## Available languages for book identifying
     ALUnknown, ALEnglish, ALPortuguese
 
+func defaultTranslationFor*(lang: AvailableLanguages): string =
+  case lang:
+    of ALUnknown: "any"
+    of ALEnglish: "en_KJV1769D" # King James Version 1769 with Apocrypha (en)
+    of ALPortuguese: "pt_yah" # YAH+ (pt)
+
 # Parsing tools
 
 type NormalizedText* = tuple

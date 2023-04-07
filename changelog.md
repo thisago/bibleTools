@@ -1,9 +1,19 @@
 # Changelog
 
+## Version 1.2.0 (2023/04/07)
+
+- Changed `Revelation` portuguese book abbreviation to `Ap`
+- Added default Ozzuu Bible translation for each language
+- Added bulk verse parsing
+
+---
+
 ## Version 1.1.0 (2023/04/07)
 
 - In verse parsing added a error field to inform if there's an error in parsing
 - Now the verse regExp wants the whole string
+
+---
 
 ## Version 1.0.4 (26/03/2023)
 

@@ -277,7 +277,7 @@ func ptAbbr*(self: BibleBook): string =
     of John2: "2Jo"
     of John3: "3Jo"
     of Jude: "Jd"
-    of Revelation: "Rv"
+    of Revelation: "Ap"
     of Jubilees: "Jb"
     of Enoch: "Eq"
     of Jasher: "Jsr"

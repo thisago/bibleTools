@@ -1,0 +1,103 @@
+nimTitle	base	bibleTools/books/base.html	module bibleTools/books/base		0
+nim	UnknownBook	bibleTools/books/base.html#UnknownBook	BibleBook.UnknownBook		9
+nim	Genesis	bibleTools/books/base.html#Genesis	BibleBook.Genesis		9
+nim	Exodus	bibleTools/books/base.html#Exodus	BibleBook.Exodus		9
+nim	Leviticus	bibleTools/books/base.html#Leviticus	BibleBook.Leviticus		9
+nim	Numbers	bibleTools/books/base.html#Numbers	BibleBook.Numbers		9
+nim	Deuteronomy	bibleTools/books/base.html#Deuteronomy	BibleBook.Deuteronomy		9
+nim	Jubilees	bibleTools/books/base.html#Jubilees	BibleBook.Jubilees		9
+nim	Enoch	bibleTools/books/base.html#Enoch	BibleBook.Enoch		9
+nim	Jasher	bibleTools/books/base.html#Jasher	BibleBook.Jasher		9
+nim	Joshua	bibleTools/books/base.html#Joshua	BibleBook.Joshua		9
+nim	Judges	bibleTools/books/base.html#Judges	BibleBook.Judges		9
+nim	Samuel1	bibleTools/books/base.html#Samuel1	BibleBook.Samuel1		9
+nim	Samuel2	bibleTools/books/base.html#Samuel2	BibleBook.Samuel2		9
+nim	Kings1	bibleTools/books/base.html#Kings1	BibleBook.Kings1		9
+nim	Kings2	bibleTools/books/base.html#Kings2	BibleBook.Kings2		9
+nim	Isaiah	bibleTools/books/base.html#Isaiah	BibleBook.Isaiah		9
+nim	Jeremiah	bibleTools/books/base.html#Jeremiah	BibleBook.Jeremiah		9
+nim	EpistleOfJeremiah	bibleTools/books/base.html#EpistleOfJeremiah	BibleBook.EpistleOfJeremiah		9
+nim	Ezekiel	bibleTools/books/base.html#Ezekiel	BibleBook.Ezekiel		9
+nim	Tobit	bibleTools/books/base.html#Tobit	BibleBook.Tobit		9
+nim	Baruk1	bibleTools/books/base.html#Baruk1	BibleBook.Baruk1		9
+nim	Baruk2	bibleTools/books/base.html#Baruk2	BibleBook.Baruk2		9
+nim	Hosea	bibleTools/books/base.html#Hosea	BibleBook.Hosea		9
+nim	Joel	bibleTools/books/base.html#Joel	BibleBook.Joel		9
+nim	Amos	bibleTools/books/base.html#Amos	BibleBook.Amos		9
+nim	Obadiah	bibleTools/books/base.html#Obadiah	BibleBook.Obadiah		9
+nim	Jonah	bibleTools/books/base.html#Jonah	BibleBook.Jonah		9
+nim	Micah	bibleTools/books/base.html#Micah	BibleBook.Micah		9
+nim	Nahum	bibleTools/books/base.html#Nahum	BibleBook.Nahum		9
+nim	Habakkuk	bibleTools/books/base.html#Habakkuk	BibleBook.Habakkuk		9
+nim	Zephaniah	bibleTools/books/base.html#Zephaniah	BibleBook.Zephaniah		9
+nim	Haggai	bibleTools/books/base.html#Haggai	BibleBook.Haggai		9
+nim	Zechariah	bibleTools/books/base.html#Zechariah	BibleBook.Zechariah		9
+nim	Malachi	bibleTools/books/base.html#Malachi	BibleBook.Malachi		9
+nim	Psalms	bibleTools/books/base.html#Psalms	BibleBook.Psalms		9
+nim	Proverbs	bibleTools/books/base.html#Proverbs	BibleBook.Proverbs		9
+nim	Job	bibleTools/books/base.html#Job	BibleBook.Job		9
+nim	WisdomOfSolomon	bibleTools/books/base.html#WisdomOfSolomon	BibleBook.WisdomOfSolomon		9
+nim	Sirach	bibleTools/books/base.html#Sirach	BibleBook.Sirach		9
+nim	SongOfSolomon	bibleTools/books/base.html#SongOfSolomon	BibleBook.SongOfSolomon		9
+nim	Ruth	bibleTools/books/base.html#Ruth	BibleBook.Ruth		9
+nim	Lamentations	bibleTools/books/base.html#Lamentations	BibleBook.Lamentations		9
+nim	Ecclesiastes	bibleTools/books/base.html#Ecclesiastes	BibleBook.Ecclesiastes		9
+nim	Esther	bibleTools/books/base.html#Esther	BibleBook.Esther		9
+nim	AdditionsToEsther	bibleTools/books/base.html#AdditionsToEsther	BibleBook.AdditionsToEsther		9
+nim	Judith	bibleTools/books/base.html#Judith	BibleBook.Judith		9
+nim	Chronicles1	bibleTools/books/base.html#Chronicles1	BibleBook.Chronicles1		9
+nim	Chronicles2	bibleTools/books/base.html#Chronicles2	BibleBook.Chronicles2		9
+nim	PrayerOfManasseh	bibleTools/books/base.html#PrayerOfManasseh	BibleBook.PrayerOfManasseh		9
+nim	Daniel	bibleTools/books/base.html#Daniel	BibleBook.Daniel		9
+nim	PrayerOfAzariah	bibleTools/books/base.html#PrayerOfAzariah	BibleBook.PrayerOfAzariah		9
+nim	Susanna	bibleTools/books/base.html#Susanna	BibleBook.Susanna		9
+nim	BelAndTheDragon	bibleTools/books/base.html#BelAndTheDragon	BibleBook.BelAndTheDragon		9
+nim	Ezra	bibleTools/books/base.html#Ezra	BibleBook.Ezra		9
+nim	Nehemiah	bibleTools/books/base.html#Nehemiah	BibleBook.Nehemiah		9
+nim	Ezra3	bibleTools/books/base.html#Ezra3	BibleBook.Ezra3		9
+nim	Ezra4	bibleTools/books/base.html#Ezra4	BibleBook.Ezra4		9
+nim	Maccabees1	bibleTools/books/base.html#Maccabees1	BibleBook.Maccabees1		9
+nim	Maccabees2	bibleTools/books/base.html#Maccabees2	BibleBook.Maccabees2		9
+nim	Maccabees3	bibleTools/books/base.html#Maccabees3	BibleBook.Maccabees3		9
+nim	Maccabees4	bibleTools/books/base.html#Maccabees4	BibleBook.Maccabees4		9
+nim	Matthew	bibleTools/books/base.html#Matthew	BibleBook.Matthew		9
+nim	Mark	bibleTools/books/base.html#Mark	BibleBook.Mark		9
+nim	Luke	bibleTools/books/base.html#Luke	BibleBook.Luke		9
+nim	Acts	bibleTools/books/base.html#Acts	BibleBook.Acts		9
+nim	James	bibleTools/books/base.html#James	BibleBook.James		9
+nim	Peter1	bibleTools/books/base.html#Peter1	BibleBook.Peter1		9
+nim	Peter2	bibleTools/books/base.html#Peter2	BibleBook.Peter2		9
+nim	Jude	bibleTools/books/base.html#Jude	BibleBook.Jude		9
+nim	Timothy1	bibleTools/books/base.html#Timothy1	BibleBook.Timothy1		9
+nim	Titus	bibleTools/books/base.html#Titus	BibleBook.Titus		9
+nim	Thessalonians1	bibleTools/books/base.html#Thessalonians1	BibleBook.Thessalonians1		9
+nim	Thessalonians2	bibleTools/books/base.html#Thessalonians2	BibleBook.Thessalonians2		9
+nim	Romans	bibleTools/books/base.html#Romans	BibleBook.Romans		9
+nim	Galatians	bibleTools/books/base.html#Galatians	BibleBook.Galatians		9
+nim	Timothy2	bibleTools/books/base.html#Timothy2	BibleBook.Timothy2		9
+nim	Corinthians1	bibleTools/books/base.html#Corinthians1	BibleBook.Corinthians1		9
+nim	Corinthians2	bibleTools/books/base.html#Corinthians2	BibleBook.Corinthians2		9
+nim	Ephesians	bibleTools/books/base.html#Ephesians	BibleBook.Ephesians		9
+nim	Philippians	bibleTools/books/base.html#Philippians	BibleBook.Philippians		9
+nim	Colossians	bibleTools/books/base.html#Colossians	BibleBook.Colossians		9
+nim	Laodiceans	bibleTools/books/base.html#Laodiceans	BibleBook.Laodiceans		9
+nim	Philemon	bibleTools/books/base.html#Philemon	BibleBook.Philemon		9
+nim	Hebrews	bibleTools/books/base.html#Hebrews	BibleBook.Hebrews		9
+nim	John	bibleTools/books/base.html#John	BibleBook.John		9
+nim	John1	bibleTools/books/base.html#John1	BibleBook.John1		9
+nim	John2	bibleTools/books/base.html#John2	BibleBook.John2		9
+nim	John3	bibleTools/books/base.html#John3	BibleBook.John3		9
+nim	Revelation	bibleTools/books/base.html#Revelation	BibleBook.Revelation		9
+nim	BibleBook	bibleTools/books/base.html#BibleBook	enum BibleBook		9
+nim	ALUnknown	bibleTools/books/base.html#ALUnknown	AvailableLanguages.ALUnknown		25
+nim	ALEnglish	bibleTools/books/base.html#ALEnglish	AvailableLanguages.ALEnglish		25
+nim	ALPortuguese	bibleTools/books/base.html#ALPortuguese	AvailableLanguages.ALPortuguese		25
+nim	AvailableLanguages	bibleTools/books/base.html#AvailableLanguages	enum AvailableLanguages		25
+nim	defaultTranslationFor	bibleTools/books/base.html#defaultTranslationFor,AvailableLanguages	proc defaultTranslationFor(lang: AvailableLanguages): string		29
+nim	NormalizedText	bibleTools/books/base.html#NormalizedText	tuple NormalizedText		37
+nim	normalize	bibleTools/books/base.html#normalize,string	proc normalize(s: string): NormalizedText		42
+nim	getCorrectByNum	bibleTools/books/base.html#getCorrectByNum,NormalizedText,varargs[BibleBook]	proc getCorrectByNum(s: NormalizedText; opts: varargs[BibleBook]): BibleBook		57
+nim	getCorrectByNum	bibleTools/books/base.html#getCorrectByNum,NormalizedText,openArray[]	proc getCorrectByNum(s: NormalizedText; opts: openArray[(BibleBook, int)]): BibleBook		62
+nim	isANumber	bibleTools/books/base.html#isANumber,NormalizedText,string,int	proc isANumber(s: var NormalizedText; text: string; num: int)		72
+nim	noNum	bibleTools/books/base.html#noNum,NormalizedText,BibleBook	proc noNum(s: var NormalizedText; book: BibleBook): BibleBook		82
+nimgrp	getcorrectbynum	bibleTools/books/base.html#getCorrectByNum-procs-all	proc		57

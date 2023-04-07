@@ -1,0 +1,10 @@
+nimTitle	verses	bibleTools/verses.html	module bibleTools/verses		0
+nim	BibleVerse	bibleTools/verses.html#BibleVerse	object BibleVerse		17
+nim	initBibleVerse	bibleTools/verses.html#initBibleVerse	proc initBibleVerse(): BibleVerse		24
+nim	verseRe	bibleTools/verses.html#verseRe	let verseRe		41
+nim	verseRegex	bibleTools/verses.html#verseRegex	let verseRegex		42
+nim	justVerseRegex	bibleTools/verses.html#justVerseRegex	let justVerseRegex		43
+nim	parseBibleVerse	bibleTools/verses.html#parseBibleVerse,string	proc parseBibleVerse(verse: string): BibleVerse		45
+nim	parseBibleVerses	bibleTools/verses.html#parseBibleVerses,string	proc parseBibleVerses(verses: string): seq[BibleVerse]		76
+nim	`$`	bibleTools/verses.html#$,BibleVerse,int	proc `$`(self: BibleVerse; hebrewTransliteration = false; addTranslation = false;\n    maxVerses = 5; shortBook = true; forceLang = ALUnknown): string		93
+nim	inOzzuuBible	bibleTools/verses.html#inOzzuuBible,BibleVerse,string	proc inOzzuuBible(v: BibleVerse; defaultTranslation = ""): string		124

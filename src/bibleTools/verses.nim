@@ -1,16 +1,17 @@
 when not defined js:
-  from std/nre import re, find, get, captures, `[]`, toSeq
+  from std/nre import re, find, get, captures, `[]`, toSeq, findAll
 else:
-  from std/jsre import newRegExp, exec, RegExp
+  from std/jsre import newRegExp, exec, RegExp, match
 
 from std/options import Option, UnpackDefect
 from std/strutils import parseInt, split, replace, join, toUpperAscii,
-                          toLowerAscii, contains, strip, Letters
+                          toLowerAscii, contains, strip, Letters, AllChars,
+                          Digits
 from std/strformat import fmt
 
 from bibleTools/books import identifyBibleBook, hebrewTransliteration, en, pt,
                               enAbbr, ptAbbr, AvailableLanguages, abbr, name,
-                              AnyLangBook, UnknownBook
+                              AnyLangBook, UnknownBook, defaultTranslationFor
 
 type
   BibleVerse* = object
@@ -42,7 +43,7 @@ let
   justVerseRegex* = re fmt"^{verseRe}$"
 
 proc parseBibleVerse*(verse: string): BibleVerse =
-  ## Parses the verse reference to a `BibleVerse` tuple
+  ## Parses the verse reference to a `BibleVerse`
   result.error = true
   try:
     when defined js:
@@ -70,7 +71,24 @@ proc parseBibleVerse*(verse: string): BibleVerse =
     
     if result.book.book != UnknownBook and result.chapter > 0:
       result.error = false
-  except: discard
+  except CatchableError: discard
+
+proc parseBibleVerses*(verses: string): seq[BibleVerse] =
+  ## Parses all verses references found in string to a `BibleVerse`
+  runnableExamples:
+    from pkg/bibleTools import ALPortuguese, ALEnglish
+    let parsed = "Gen 1:1; Exod 2:2; Lv 3:3".parseBibleVerses
+    doAssert parsed[2].book.lang == ALPortuguese
+    doAssert parsed[0].book.lang == ALEnglish
+    doAssert $parsed[1] == "Exo 2:2"
+  when defined js:
+    let foundVerses = verses.match newRegExp(verseRe, "g")
+  else:
+    let foundVerses = verses.findAll verseRegex
+  for s in foundVerses:
+    template verse: string =
+      when s is cstring: $s else: s
+    result.add verse.strip(chars = AllChars - Letters -  Digits).parseBibleVerse
 
 func `$`*(
   self: BibleVerse;
@@ -103,9 +121,11 @@ func `$`*(
   if addTranslation and v.translation.len > 0:
     result.add fmt" {v.translation}"
 
-func inOzzuuBible*(v: BibleVerse; defaultTranslation = "pt_yah"): string =
+func inOzzuuBible*(v: BibleVerse; defaultTranslation = ""): string =
   ## Returns a URL to see the verse in Ozzuu Bible
-  var translation = defaultTranslation
+  var translation = defaultTranslationFor v.book.lang
+  if defaultTranslation.len > 0:
+    translation = defaultTranslation
   if v.translation.len > 0:
     translation = v.translation
   result = fmt"https://bible.ozzuu.com/{translation}/{v.book.abbr}/{v.chapter}"
