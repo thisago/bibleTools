@@ -90,9 +90,12 @@ proc parseBibleVerses*(verses: string): seq[tuple[parsed: BibleVerse, raw: strin
   for s in foundVerses:
     template verseStr: string =
       when s is cstring: $s else: s
-    let verse = verseStr.clean(NonExtendedAlphanumeric, [':', ',', '-', ' ', '_']).
-          strip(chars = {':', ',', '-', ' ', '_'})
-    result.add (verse.parseBibleVerse, verse)
+    const toStrip = {':', ',', '-', ' ', '_', ';'}
+    result.add (
+      verseStr.clean(NonExtendedAlphanumeric, [':', ',', '-', ' ', '_']).
+        strip(chars = toStrip).parseBibleVerse,
+      verseStr.strip(chars = toStrip)
+    )
 
 func `$`*(
   self: BibleVerse;

@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.2.3 (2023/04/07)
+
+- Fixed bulk verse parsing raw strip
+
 ## Version 1.2.2 (2023/04/07)
 
 - Changed `Romans` portuguese book abbreviation from `Ro` to `Rm`
