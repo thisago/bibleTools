@@ -38,7 +38,7 @@ doAssert "Mt 5:17-20".parseBibleVerse == BibleVerse(
 
 ```nim
 from pkg/bibleTools import ALPortuguese, ALEnglish
-let parsed = "Gen 1:1; Exod 2:2; Lv 3:3".parseBibleVerses
+let parsed = "Gen 1:1; Exod 2:2; Lv 3:3".parseBibleVerses.parsed
 doAssert parsed[2].book.lang == ALPortuguese
 doAssert parsed[0].book.lang == ALEnglish
 doAssert $parsed[1] == "Exo 2:2"

@@ -46,7 +46,7 @@ suite "Verses":
       error: false
     )
   test "Parse verses":
-    let parsed = "Gen 1:1; Exod 2:2; Lv 3:3".parseBibleVerses
+    let parsed = "Gen 1:1; Exod 2:2; Lv 3:3".parseBibleVerses.parsed
     require parsed[2].book.lang == ALPortuguese
     require parsed[0].book.lang == ALEnglish
     require $parsed[1] == "Exo 2:2"

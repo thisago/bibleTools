@@ -73,11 +73,11 @@ proc parseBibleVerse*(verse: string): BibleVerse =
       result.error = false
   except CatchableError: discard
 
-proc parseBibleVerses*(verses: string): seq[BibleVerse] =
+proc parseBibleVerses*(verses: string): tuple[raw: seq[string]; parsed: seq[BibleVerse]] =
   ## Parses all verses references found in string to a `BibleVerse`
   runnableExamples:
     from pkg/bibleTools import ALPortuguese, ALEnglish
-    let parsed = "Gen 1:1; Exod 2:2; Lv 3:3".parseBibleVerses
+    let parsed = "Gen 1:1; Exod 2:2; Lv 3:3".parseBibleVerses.parsed
     doAssert parsed[2].book.lang == ALPortuguese
     doAssert parsed[0].book.lang == ALEnglish
     doAssert $parsed[1] == "Exo 2:2"
@@ -86,9 +86,11 @@ proc parseBibleVerses*(verses: string): seq[BibleVerse] =
   else:
     let foundVerses = verses.findAll verseRegex
   for s in foundVerses:
-    template verse: string =
+    template verseStr: string =
       when s is cstring: $s else: s
-    result.add verse.strip(chars = AllChars - Letters -  Digits).parseBibleVerse
+    let verse = verseStr.strip(chars = AllChars - Letters -  Digits)
+    result.parsed.add verse.parseBibleVerse
+    result.raw.add verse
 
 func `$`*(
   self: BibleVerse;

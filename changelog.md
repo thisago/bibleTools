@@ -4,7 +4,7 @@
 
 - Changed `Revelation` portuguese book abbreviation to `Ap`
 - Added default Ozzuu Bible translation for each language
-- Added bulk verse parsing
+- Added bulk verse parsing that returns the raw and parsed verse
 
 ---
 
