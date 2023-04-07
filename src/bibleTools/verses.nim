@@ -10,7 +10,7 @@ from std/strformat import fmt
 
 from bibleTools/books import identifyBibleBook, hebrewTransliteration, en, pt,
                               enAbbr, ptAbbr, AvailableLanguages, abbr, name,
-                              AnyLangBook
+                              AnyLangBook, UnknownBook
 
 type
   BibleVerse* = object
@@ -18,6 +18,7 @@ type
     chapter*: int
     verses*: seq[int]
     translation*: string
+    error*: bool
 
 func initBibleVerse*: BibleVerse =
   discard
@@ -35,33 +36,41 @@ else:
     except UnpackDefect: discard
 
 
-let verseRegex* = re r"([^:]+) ([0-9]{1,3})(:[0-9,\- ]+)? ?([A-z]{2}_[A-z0-9]+)?"
+let
+  verseRe* = r"([^:]+) ([0-9]{1,3})(:[0-9,\- ]+)? ?([A-z]{2}_[A-z0-9]+)?"
+  verseRegex* = re verseRe
+  justVerseRegex* = re fmt"^{verseRe}$"
 
 proc parseBibleVerse*(verse: string): BibleVerse =
   ## Parses the verse reference to a `BibleVerse` tuple
-  when defined js:
-    var parts = verseRegex.exec(verse)
-    if parts.len < 3: return
-    parts.delete 0
-  else:
-    var parts = verse.find(verseRegex).get.captures.toSeq
-  result.book = parts[0].get.strip.identifyBibleBook
-  result.chapter = parts[1].get.strip.parseInt
-  var verse = parts[2].get.strip
-  if verse.len > 0:
-    verse = verse[1..^1]
-    if "-" in verse:
-      let
-        verseParts = verse.split "-"
-        start = verseParts[0].strip.parseInt
-        to = verseParts[1].strip.parseInt
-      for i in start..to:
-        result.verses.add i
+  result.error = true
+  try:
+    when defined js:
+      var parts = justVerseRegex.exec(verse)
+      if parts.len < 3: return
+      parts.delete 0
     else:
-      for verse in verse.replace(", ", ",").split ",":
-        result.verses.add verse.strip.parseInt
-  result.translation = parts[3].get.strip
-
+      var parts = verse.find(justVerseRegex).get.captures.toSeq
+    result.book = parts[0].get.strip.identifyBibleBook
+    result.chapter = parts[1].get.strip.parseInt
+    var verse = parts[2].get.strip
+    if verse.len > 0:
+      verse = verse[1..^1]
+      if "-" in verse:
+        let
+          verseParts = verse.split "-"
+          start = verseParts[0].strip.parseInt
+          to = verseParts[1].strip.parseInt
+        for i in start..to:
+          result.verses.add i
+      else:
+        for verse in verse.replace(", ", ",").split ",":
+          result.verses.add verse.strip.parseInt
+    result.translation = parts[3].get.strip
+    
+    if result.book.book != UnknownBook and result.chapter > 0:
+      result.error = false
+  except: discard
 
 func `$`*(
   self: BibleVerse;

@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 1.1.0 (2023/04/07)
+
+- In verse parsing added a error field to inform if there's an error in parsing
+- Now the verse regExp wants the whole string
+
 ## Version 1.0.4 (26/03/2023)
 
 - Fixed Mark portuguese identification (closes #12)
