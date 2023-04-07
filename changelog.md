@@ -1,10 +1,14 @@
 # Changelog
 
+## Version 1.2.1 (2023/04/07)
+
+- Bulk verse parsing now returns the raw and parsed verse
+
 ## Version 1.2.0 (2023/04/07)
 
 - Changed `Revelation` portuguese book abbreviation to `Ap`
 - Added default Ozzuu Bible translation for each language
-- Added bulk verse parsing that returns the raw and parsed verse
+- Added bulk verse parsing
 
 ---
 
