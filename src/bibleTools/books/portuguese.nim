@@ -256,7 +256,7 @@ func ptAbbr*(self: BibleBook): string =
     of Luke: "Lc"
     of John: "Jo"
     of Acts: "At"
-    of Romans: "Ro"
+    of Romans: "Rm"
     of Corinthians1: "1Co"
     of Corinthians2: "2Co"
     of Galatians: "Gl"

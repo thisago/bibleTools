@@ -5,9 +5,10 @@ else:
 
 from std/options import Option, UnpackDefect
 from std/strutils import parseInt, split, replace, join, toUpperAscii,
-                          toLowerAscii, contains, strip, Letters, AllChars,
-                          Digits
+                          toLowerAscii, contains, strip
 from std/strformat import fmt
+
+from pkg/util/forStr import clean, NonExtendedAlphanumeric
 
 from bibleTools/books import identifyBibleBook, hebrewTransliteration, en, pt,
                               enAbbr, ptAbbr, AvailableLanguages, abbr, name,
@@ -89,7 +90,8 @@ proc parseBibleVerses*(verses: string): seq[tuple[parsed: BibleVerse, raw: strin
   for s in foundVerses:
     template verseStr: string =
       when s is cstring: $s else: s
-    let verse = verseStr.strip(chars = AllChars - Letters -  Digits)
+    let verse = verseStr.clean(NonExtendedAlphanumeric, [':', ',', '-', ' ', '_']).
+          strip(chars = {':', ',', '-', ' ', '_'})
     result.add (verse.parseBibleVerse, verse)
 
 func `$`*(
