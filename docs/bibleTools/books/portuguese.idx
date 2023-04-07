@@ -1,4 +1,0 @@
-nimTitle	portuguese	bibleTools/books/portuguese.html	module bibleTools/books/portuguese		0
-nim	pt	bibleTools/books/portuguese.html#pt,BibleBook	proc pt(self: BibleBook): string		3
-nim	identifyBibleBookPt	bibleTools/books/portuguese.html#identifyBibleBookPt,string	proc identifyBibleBookPt(bookName: string): BibleBook		97
-nim	ptAbbr	bibleTools/books/portuguese.html#ptAbbr,BibleBook	proc ptAbbr(self: BibleBook): string		194

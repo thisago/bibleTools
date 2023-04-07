@@ -1,2 +1,5 @@
 tests/testVerses
 tests/testBooks
+tests/testVerses.js
+tests/testBooks.js
+docs

@@ -1,8 +1,0 @@
-nimTitle	books	bibleTools/books.html	module bibleTools/books		0
-nim	canonBooks	bibleTools/books.html#canonBooks	const canonBooks		10
-nim	deuterocanonical	bibleTools/books.html#deuterocanonical	const deuterocanonical		19
-nim	isCanon	bibleTools/books.html#isCanon,BibleBook	proc isCanon(self: BibleBook; catholic = false): bool		22
-nim	AnyLangBook	bibleTools/books.html#AnyLangBook	tuple AnyLangBook		28
-nim	identifyBibleBook	bibleTools/books.html#identifyBibleBook,string	proc identifyBibleBook(s: string; lang = ALUnknown): AnyLangBook		32
-nim	name	bibleTools/books.html#name,AnyLangBook	proc name(self: AnyLangBook): string		45
-nim	abbr	bibleTools/books.html#abbr,AnyLangBook	proc abbr(self: AnyLangBook): string		52

@@ -1,4 +1,0 @@
-nimTitle	english	bibleTools/books/english.html	module bibleTools/books/english		0
-nim	en	bibleTools/books/english.html#en,BibleBook	proc en(self: BibleBook): string		3
-nim	identifyBibleBookEn	bibleTools/books/english.html#identifyBibleBookEn,string	proc identifyBibleBookEn(bookName: string): BibleBook		96
-nim	enAbbr	bibleTools/books/english.html#enAbbr,BibleBook	proc enAbbr(self: BibleBook): string		226
