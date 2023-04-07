@@ -38,10 +38,11 @@ doAssert "Mt 5:17-20".parseBibleVerse == BibleVerse(
 
 ```nim
 from pkg/bibleTools import ALPortuguese, ALEnglish
-let parsed = "Gen 1:1; Exod 2:2; Lv 3:3".parseBibleVerses.parsed
-doAssert parsed[2].book.lang == ALPortuguese
-doAssert parsed[0].book.lang == ALEnglish
-doAssert $parsed[1] == "Exo 2:2"
+let found = "Gen 1:1; exod 2:2; Lv 3:3".parseBibleVerses
+doAssert found[2].parsed.book.lang == ALPortuguese
+doAssert found[0].parsed.book.lang == ALEnglish
+doAssert $found[1].parsed == "Exo 2:2"
+doAssert found[1].raw == "exod 2:2"
 ```
 
 ### Stringify verse
