@@ -74,7 +74,9 @@ proc parseBibleVerse*(verse: string): BibleVerse =
       result.error = false
   except CatchableError: discard
 
-proc parseBibleVerses*(verses: string): seq[tuple[parsed: BibleVerse, raw: string]] =
+type ParsedBibleVerses* = seq[tuple[parsed: BibleVerse, raw: string]]
+
+proc parseBibleVerses*(verses: string): ParsedBibleVerses =
   ## Parses all verses references found in string to a `BibleVerse`
   runnableExamples:
     from pkg/bibleTools import ALPortuguese, ALEnglish

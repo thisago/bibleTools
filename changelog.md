@@ -2,6 +2,11 @@
 
 ## Version 1.2.4 (2023/04/07)
 
+**Breaking change**
+- Added multiple chapters parsing, changed the `BibleVerse` object
+
+## Version 1.2.4 (2023/04/07)
+
 - Fixed verses Regex
 
 ## Version 1.2.3 (2023/04/07)
