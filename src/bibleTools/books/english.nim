@@ -127,7 +127,7 @@ func identifyBibleBookEn*(bookName: string): BibleBook =
       of "jb", Job.toText: s.noNum Job
       of "psalm", "pslm", "ps", "psa", "psm", "pss", Psalms.toText: s.noNum Psalms
       of "prov", "pro", "pr", "prv", Proverbs.toText: s.noNum Proverbs
-      of "eccles", "eccle", "ecc", "ec", "qoh", Ecclesiastes.toText: s.noNum Ecclesiastes
+      of "eccles", "eccle", "ecc", "ec", "qoh", "eccl", Ecclesiastes.toText: s.noNum Ecclesiastes
       of "songofsongs", "song", "so", "sos", "canticleofcanticles", "canticles", "cant", "sg", "sng", SongOfSolomon.toText: s.noNum SongOfSolomon
       of "is", "isa", Isaiah.toText: s.noNum Isaiah
       of "jer", "je", "jr", Jeremiah.toText: s.noNum Jeremiah
@@ -154,7 +154,7 @@ func identifyBibleBookEn*(bookName: string): BibleBook =
       of "jdth", "jdt", "jth", Judith.toText: s.noNum Judith
       of "addesth", "addes", "restofesther", "therestofesther", "aes", "esthgr", "gresth", "esg", AdditionsToEsther.toText: s.noNum AdditionsToEsther
       of "wisdofsol", "wis", "ws", "wisdom", WisdomOfSolomon.toText: s.noNum WisdomOfSolomon
-      of "sir", "ecclesiasticus", "ecclus", "eccl", Sirach.toText: s.noNum Sirach
+      of "sir", "ecclesiasticus", "ecclus", Sirach.toText: s.noNum Sirach
       of "baruch", "bar", Baruk1.toText:
         if s.numbers == "": s.numbers = "1"
         s.getCorrectByNum(Baruk1, Baruk2)

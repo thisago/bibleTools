@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.2.5 (2023/08/05)
+
+- Fixed Sirach and Ecclesiastes abbreviation parsing (Closes #23)
+
 ## Version 1.2.4 (2023/04/07)
 
 **Breaking change**

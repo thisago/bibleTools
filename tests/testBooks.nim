@@ -1,6 +1,6 @@
 import std/unittest
-import ./bibleTools
-import ./bibleTools/books/base
+import bibleTools
+import bibleTools/books/base
 
 proc concat[I1, I2: static[int]; T](a: array[I1, T], b: array[I2, T]): array[I1 + I2, T] =
   result[0..a.high] = a
@@ -44,6 +44,7 @@ suite "Books identification":
     require "Mq".identifyBibleBook.book == Micah
     require "1mc".identifyBibleBook.book == Maccabees1
     require "5mc".identifyBibleBook.book == UnknownBook
+    require "eccl".identifyBibleBook.book == "ecl".identifyBibleBook.book
 
 suite "Books stringify":
   test "English":
