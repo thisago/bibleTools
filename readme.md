@@ -1,6 +1,11 @@
-# Bible Tools
+<div align=center>
+
+# **Bible Tools**
 
 Bible tools to manipulate bible references!
+
+[Examples](#examples) - [TODO](#todo) - [License](#license)
+</div>
 
 ## Examples
 
